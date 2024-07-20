@@ -49,6 +49,7 @@
             font-size: 1.2rem; /* Increase font size */
             margin-left: auto; /* Align Home link to the rightmost side */
         }
+
         .header-content2 a {
             color: #fff; /* Set link color to white */
             text-decoration: none; /* Remove underline by default */
@@ -64,11 +65,13 @@
             font-size: 25px;
             color: #fff;
         }
+
         .logo a {
             color: #fff;
             text-decoration: none;
             font-size: 25px;
         }
+
         .logo a:hover {
             color: #bb86fc;
             text-decoration: underline;
@@ -110,6 +113,7 @@
         .profile-cart-icons a:hover {
             text-decoration: underline;
         }
+
         header .profile .cart-icon {
             margin-right: 10px;
             font-size: 24px;
@@ -220,7 +224,7 @@
                 <button class="add-to-cart" onclick="addToCart('Tokyo Marui M4A1', 999, 'images/Tokyo Marui M4A1.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Tokyo Marui M4A1')">
+                <button class="add-to-wishlist" onclick="addToWishlist('Tokyo Marui M4A1', 999, 'images/Tokyo Marui M4A1.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -234,7 +238,7 @@
                 <button class="add-to-cart" onclick="addToCart('Krytac Trident MK2', 899, 'images/Krytac Trident MK2.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Krytac Trident MK2')">
+                <button class="add-to-wishlist" onclick="addToWishlist('Krytac Trident MK2', 899, 'images/Krytac Trident MK2.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -248,7 +252,7 @@
                 <button class="add-to-cart" onclick="addToCart('G&G Combat Machine M4', 1099, 'images/G&G Combat Machine M4.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('G&G Combat Machine M4')">
+                <button class="add-to-wishlist" onclick="addToWishlist('G&G Combat Machine M4', 1099, 'images/G&G Combat Machine M4.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -262,7 +266,7 @@
                 <button class="add-to-cart" onclick="addToCart('VFC HK416', 799, 'images/VFC HK416.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('VFC HK416')">
+                <button class="add-to-wishlist" onclick="addToWishlist('VFC HK416', 799, 'images/VFC HK416.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -276,7 +280,7 @@
                 <button class="add-to-cart" onclick="addToCart('ASG Scorpion Evo 3 A1', 1199, 'images/ASG Scorpion Evo 3 A1.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('ASG Scorpion Evo 3 A1')">
+                <button class="add-to-wishlist" onclick="addToWishlist('ASG Scorpion Evo 3 A1', 1199, 'images/ASG Scorpion Evo 3 A1.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -290,7 +294,7 @@
                 <button class="add-to-cart" onclick="addToCart('CheyTac M200 Intervention', 999, 'images/CheyTac M200 Intervention.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('CheyTac M200 Intervention')">
+                <button class="add-to-wishlist" onclick="addToWishlist('CheyTac M200 Intervention', 999, 'images/CheyTac M200 Intervention.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -323,7 +327,7 @@
             alert(product + " has been added to the cart.");
         }
 
-        function addToWishlist(product) {
+        function addToWishlist(product, price, image) {
             // Retrieve existing wishlist items from localStorage or initialize empty array
             let wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
 
@@ -333,7 +337,7 @@
                 alert(product + " is already in the wishlist.");
             } else {
                 // If item does not exist, add new item to wishlist
-                wishlistItems.push({ product: product });
+                wishlistItems.push({ product: product, price: price, image: image });
                 // Save updated wishlistItems back to localStorage
                 localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
                 alert(product + " has been added to the wishlist.");

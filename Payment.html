@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 20px;
+            position: relative;
+        }
+
+        .container {
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1; /* Ensure container is above overlay */
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .total-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .btn-submit {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+
+        /* Styles for success animation */
+        .success-container {
+            display: none;
+            position: fixed; /* Fixed position to overlay the entire viewport */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+            color: #fff;
+            text-align: center;
+            z-index: 2; /* Ensure success container is above everything else */
+            padding-top: 20%;
+        }
+
+        .success-container svg {
+            width: 100px;
+            height: 100px;
+            stroke-width: 3;
+            stroke: #fff;
+            fill: #28a745;
+            animation: pulse 1.5s infinite;
+        }
+
+        .success-container svg path {
+            animation: draw 0.5s ease-out forwards;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes draw {
+            0% {
+                stroke-dasharray: 100;
+                stroke-dashoffset: 100;
+            }
+            100% {
+                stroke-dasharray: 100;
+                stroke-dashoffset: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center">Payment Information</h2>
+    <form id="paymentForm">
+        <div class="form-group">
+            <label for="cardHolderName">Card Holder Name</label>
+            <input type="text" class="form-control" id="cardHolderName" placeholder="John Doe" required>
+        </div>
+        <div class="form-group">
+            <label for="cardNumber">Card Number</label>
+            <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9012" maxlength="12" required>
+        </div>
+        <div class="form-group">
+            <label for="cvv">CVV</label>
+            <input type="text" class="form-control" id="cvv" placeholder="123" maxlength="3" required>
+        </div>
+        <div class="form-group">
+            <label>Total Amount</label>
+            <div class="total-value" id="totalAmount">$0.00</div>
+        </div>
+        <button type="submit" class="btn btn-submit btn-block">Submit Payment</button>
+    </form>
+
+    <div class="success-container" id="successContainer">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M7 12l3 3 7-7"/>
+        </svg>
+        <h3>Order Placed Successfully!</h3>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    // Simulate getting the total value from cart
+    document.addEventListener('DOMContentLoaded', () => {
+        const totalAmount = localStorage.getItem('cartTotal') || '$0.00';
+        document.getElementById('totalAmount').innerText = totalAmount;
+    });
+
+    document.getElementById('paymentForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        document.getElementById('successContainer').style.display = 'block';
+        setTimeout(() => {
+            // Redirect or further handling after showing success message
+            window.location.href = 'Home_page.html'; // Example redirection
+        }, 2000); // Show success animation for 2 seconds
+    });
+</script>
+
+</body>
+</html>

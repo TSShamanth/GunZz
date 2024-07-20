@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #message {
+            font-size: 16px;
+            color: #dc3545;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Payment Details</h1>
+        <form id="payment-form">
+            <div class="form-group">
+                <label for="username">User Name:</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" class="form-control" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="alternate-phone">Alternate Phone Number:</label>
+                <input type="tel" class="form-control" id="alternate-phone" name="alternate-phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">House Address:</label>
+                <textarea class="form-control" id="address" name="address" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email ID:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+
+            <div class="text-right mt-3">
+                <a href="Payment.html" class="btn btn-primary">Contiue</a>
+            </div>
+        </form>
+        <div id="message"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('continue-button').addEventListener('click', function () {
+            const username = document.getElementById('username').value;
+            const phone = document.getElementById('phone').value;
+            const alternatePhone = document.getElementById('alternate-phone').value;
+            const address = document.getElementById('address').value;
+            const email = document.getElementById('email').value;
+
+            if (phone === alternatePhone) {
+                document.getElementById('message').textContent = 'Phone number and alternate phone number cannot be the same.';
+                return;
+            }
+
+            // Clear previous message
+            document.getElementById('message').textContent = '';
+
+            // Handle form submission here (e.g., send data to server or local storage)
+            // For now, just show a success message
+            document.getElementById('message').textContent = 'Form submitted successfully!';
+            document.getElementById('message').style.color = '#28a745'; // Success color
+        });
+    </script>
+</body>
+</html>

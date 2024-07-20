@@ -195,6 +195,12 @@
             bottom: 0;
             width: 100%;
         }
+
+        /* Highlight styling for search results */
+        .highlight {
+            border: 2px solid #ff0; /* Yellow border for highlight */
+            background-color: #f0f0f0; /* Light grey background for highlight */
+        }
     </style>
 </head>
 <body>
@@ -227,7 +233,7 @@
                     <img src="images/cart.png.crdownload" alt="Cart Icon" style="width: 18px; vertical-align: middle; margin-right: 5px;">
                     Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('AK-47', 999)">
+                <button class="add-to-wishlist" onclick="addToWishlist('AK-47', 999, 'images/AK.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -241,7 +247,7 @@
                 <button class="add-to-cart" onclick="addToCart('AR-15', 899, 'images/AR-15.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('AR-15', 899)">
+                <button class="add-to-wishlist" onclick="addToWishlist('AR-15', 899, 'images/AR-15.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -255,7 +261,7 @@
                 <button class="add-to-cart" onclick="addToCart('HK-416', 1099, 'images/hk416.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('HK-416', 1099)">
+                <button class="add-to-wishlist" onclick="addToWishlist('HK-416', 1099, 'images/hk416.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -269,7 +275,7 @@
                 <button class="add-to-cart" onclick="addToCart('TAR-21', 799, 'images/tar21.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('TAR-21', 799)">
+                <button class="add-to-wishlist" onclick="addToWishlist('TAR-21', 799, 'images/tar21.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -283,7 +289,7 @@
                 <button class="add-to-cart" onclick="addToCart('AUG', 1199, 'images/aug.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('AUG', 1199)">
+                <button class="add-to-wishlist" onclick="addToWishlist('AUG', 1199, 'images/aug.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -297,7 +303,7 @@
                 <button class="add-to-cart" onclick="addToCart('SCAR', 999, 'images/scar.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('SCAR', 999)">
+                <button class="add-to-wishlist" onclick="addToWishlist('SCAR', 999, 'images/scar.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -314,6 +320,8 @@
             let existingItem = cartItems.find(item => item.product === product);
             if (existingItem) {
                 existingItem.quantity++;
+                existingItem.price = price; // Update price if item already in cart
+                existingItem.image = image; // Update image if item already in cart
             } else {
                 cartItems.push({ product: product, price: price, quantity: 1, image: image });
             }
@@ -321,13 +329,13 @@
             alert(product + " has been added to the cart at $" + price);
         }
 
-        function addToWishlist(product, price) {
+        function addToWishlist(product, price, image) {
             let wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
             let existingItem = wishlistItems.find(item => item.product === product);
             if (existingItem) {
                 alert(product + " is already in the wishlist.");
             } else {
-                wishlistItems.push({ product: product, price: price });
+                wishlistItems.push({ product: product, price: price, image: image });
                 localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
                 alert(product + " has been added to the wishlist.");
             }
@@ -348,3 +356,4 @@
     </script>
 </body>
 </html>
+

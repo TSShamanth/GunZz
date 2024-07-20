@@ -220,7 +220,7 @@
                 <button class="add-to-cart" onclick="addToCart('Remington 870', 999, 'images/Remington 870.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Remington 870')">
+                <button class="add-to-wishlist" onclick="addToWishlist('Remington 870', 999, 'images/Remington 870.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -234,7 +234,7 @@
                 <button class="add-to-cart" onclick="addToCart('Mossberg 500', 899, 'images/Mossberg 500.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Mossberg 500')">
+                <button class="add-to-wishlist" onclick="addToWishlist('Mossberg 500', 899, 'images/Mossberg 500.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -248,7 +248,7 @@
                 <button class="add-to-cart" onclick="addToCart('Benelli M4', 1099, 'images/Benelli M4.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Benelli M4')">
+                <button class="add-to-wishlist" onclick="addToWishlist('Benelli M4', 1099, 'images/Benelli M4.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -262,7 +262,7 @@
                 <button class="add-to-cart" onclick="addToCart('Browning BPS', 799, 'images/Browning BPS.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Browning BPS')">
+                <button class="add-to-wishlist" onclick="addToWishlist('Browning BPS', 799, 'images/Browning BPS.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -276,7 +276,7 @@
                 <button class="add-to-cart" onclick="addToCart('Winchester Model 1300', 1199, 'images/Winchester Model 1300.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Winchester Model 1300')">
+                <button class="add-to-wishlist" onclick="addToWishlist('Winchester Model 1300', 1199, 'images/Winchester Model 1300.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -290,7 +290,7 @@
                 <button class="add-to-cart" onclick="addToCart('Remington Versa Max', 999, 'images/Remington Versa Max.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Remington Versa Max')">
+                <button class="add-to-wishlist" onclick="addToWishlist('Remington Versa Max', 999, 'images/Remington Versa Max.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -328,7 +328,7 @@
             alert(product + " has been added to the cart.");
         }
 
-        function addToWishlist(product) {
+        function addToWishlist(product, price, image) {
             // Retrieve existing wishlist items from localStorage or initialize empty array
             let wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
 
@@ -338,11 +338,34 @@
                 alert(product + " is already in the wishlist.");
             } else {
                 // If item does not exist, add new item to wishlist
-                wishlistItems.push({ product: product });
+                wishlistItems.push({ product: product, price: price, image: image });
                 // Save updated wishlistItems back to localStorage
                 localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
                 alert(product + " has been added to the wishlist.");
             }
+        }
+
+        function moveFromWishlistToCart() {
+            let wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+            wishlistItems.forEach(item => {
+                const existingItem = cartItems.find(cartItem => cartItem.product === item.product);
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cartItems.push({
+                        product: item.product,
+                        price: item.price,
+                        image: item.image,
+                        quantity: 1
+                    });
+                }
+            });
+
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            localStorage.removeItem('wishlistItems');
+            alert("Items moved from wishlist to cart.");
         }
 
         function goBack() {

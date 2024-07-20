@@ -105,7 +105,7 @@
             <p><strong>Total:</strong> $<span id="totalAmount">0.00</span></p>
         </div>
         <div class="text-right mt-3">
-            <a href="Payment.html" class="btn btn-primary">Order Now</a>
+            <a href="Payment_details.html" class="btn btn-primary" onclick="storeTotalAndProceed()">Order Now</a>
         </div>
     </div>
 
@@ -148,6 +148,8 @@
             });
 
             totalAmountElement.textContent = totalAmount.toFixed(2);
+            // Store the total amount in localStorage
+            localStorage.setItem('cartTotal', totalAmount.toFixed(2));
         }
 
         function updateQuantity(index) {
@@ -167,6 +169,13 @@
             cartItems = cartItems.filter(item => item.product !== product);
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
             displayCartItems();
+        }
+
+        function storeTotalAndProceed() {
+            // Ensure total is up-to-date before proceeding
+            displayCartItems();
+            // Redirect to payment page
+            window.location.href = 'Payment_details.html';
         }
 
         displayCartItems();

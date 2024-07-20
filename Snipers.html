@@ -221,7 +221,7 @@
                 <button class="add-to-cart" onclick="addToCart('Remington 700', 999, 'images/Remington 700.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Remington 700', 999)">
+                <button class="add-to-wishlist" onclick="addToWishlist('Remington 700', 999, 'images/Remington 700.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -235,7 +235,7 @@
                 <button class="add-to-cart" onclick="addToCart('M40 Rifle', 899, 'images/M40 Rifle.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('M40 Rifle', 899)">
+                <button class="add-to-wishlist" onclick="addToWishlist('M40 Rifle', 899, 'images/M40 Rifle.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -249,7 +249,7 @@
                 <button class="add-to-cart" onclick="addToCart('Accuracy International AXMC', 1099, 'images/Accuracy International AXMC.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Accuracy International AXMC', 1099)">
+                <button class="add-to-wishlist" onclick="addToWishlist('Accuracy International AXMC', 1099, 'images/Accuracy International AXMC.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -263,7 +263,7 @@
                 <button class="add-to-cart" onclick="addToCart('Barrett M82 (M107)', 799, 'images/Barrett M82 (M107).png.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Barrett M82 (M107)', 799)">
+                <button class="add-to-wishlist" onclick="addToWishlist('Barrett M82 (M107)', 799, 'images/Barrett M82 (M107).png.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -277,7 +277,7 @@
                 <button class="add-to-cart" onclick="addToCart('Sako TRG', 1199, 'images/Sako TRG.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Sako TRG', 1199)">
+                <button class="add-to-wishlist" onclick="addToWishlist('Sako TRG', 1199, 'images/Sako TRG.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -291,7 +291,7 @@
                 <button class="add-to-cart" onclick="addToCart('CheyTac M200 Intervention', 999, 'images/CheyTac M200 Intervention.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('CheyTac M200 Intervention', 999)">
+                <button class="add-to-wishlist" onclick="addToWishlist('CheyTac M200 Intervention', 999, 'images/CheyTac M200 Intervention.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -318,18 +318,14 @@
             alert(product + " has been added to the cart.");
         }
 
-        function addToWishlist(product, price) {
-            // Retrieve existing wishlist items from localStorage or initialize empty array
+        function addToWishlist(product, price, image) {
             let wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
 
-            // Check if item already exists in wishlist
             let existingItem = wishlistItems.find(item => item.product === product);
             if (existingItem) {
                 alert(product + " is already in the wishlist.");
             } else {
-                // If item does not exist, add new item to wishlist
-                wishlistItems.push({ product: product, price: price });
-                // Save updated wishlistItems back to localStorage
+                wishlistItems.push({ product: product, price: price, image: image });
                 localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
                 alert(product + " has been added to the wishlist.");
             }

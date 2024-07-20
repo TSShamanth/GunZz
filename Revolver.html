@@ -220,7 +220,7 @@
                 <button class="add-to-cart" onclick="addToCart('Colt Python', 999, 'images/Colt Python.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Colt Python', 999)">
+                <button class="add-to-wishlist" onclick="addToWishlist('Colt Python', 999, 'images/Colt Python.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -234,7 +234,7 @@
                 <button class="add-to-cart" onclick="addToCart('Smith & Wesson Model 686', 899, 'images/Smith & Wesson Model 686.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Smith & Wesson Model 686', 899)">
+                <button class="add-to-wishlist" onclick="addToWishlist('Smith & Wesson Model 686', 899, 'images/Smith & Wesson Model 686.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -248,7 +248,7 @@
                 <button class="add-to-cart" onclick="addToCart('Ruger GP100', 1099, 'images/Ruger GP100.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Ruger GP100', 1099)">
+                <button class="add-to-wishlist" onclick="addToWishlist('Ruger GP100', 1099, 'images/Ruger GP100.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -262,7 +262,7 @@
                 <button class="add-to-cart" onclick="addToCart('Smith & Wesson Model 29', 799, 'images/Smith & Wesson Model 29.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Smith & Wesson Model 29', 799)">
+                <button class="add-to-wishlist" onclick="addToWishlist('Smith & Wesson Model 29', 799, 'images/Smith & Wesson Model 29.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -276,7 +276,7 @@
                 <button class="add-to-cart" onclick="addToCart('Colt King Cobra', 1199, 'images/Colt King Cobra.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Colt King Cobra', 1199)">
+                <button class="add-to-wishlist" onclick="addToWishlist('Colt King Cobra', 1199, 'images/Colt King Cobra.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -290,7 +290,7 @@
                 <button class="add-to-cart" onclick="addToCart('Ruger Redhawk', 999, 'images/Ruger Redhawk.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Ruger Redhawk', 999)">
+                <button class="add-to-wishlist" onclick="addToWishlist('Ruger Redhawk', 999, 'images/Ruger Redhawk.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -323,7 +323,7 @@
             alert(product + " has been added to the cart.");
         }
 
-        function addToWishlist(product, price) {
+        function addToWishlist(product, price, image) {
             // Retrieve existing wishlist items from localStorage or initialize empty array
             let wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
 
@@ -333,11 +333,37 @@
                 alert(product + " is already in the wishlist.");
             } else {
                 // If item does not exist, add new item to wishlist
-                wishlistItems.push({ product: product, price: price });
+                wishlistItems.push({ product: product, price: price, image: image });
                 // Save updated wishlistItems back to localStorage
                 localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
                 alert(product + " has been added to the wishlist.");
             }
+        }
+
+        function moveFromWishlistToCart() {
+            // Retrieve wishlist and cart items from localStorage
+            let wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+            // Iterate over wishlist items
+            wishlistItems.forEach(item => {
+                // Check if item already exists in cart
+                let existingItem = cartItems.find(cartItem => cartItem.product === item.product);
+                if (existingItem) {
+                    // If item exists, increase quantity
+                    existingItem.quantity++;
+                } else {
+                    // If item does not exist, add new item to cart
+                    cartItems.push({ product: item.product, price: item.price, quantity: 1, image: item.image });
+                }
+            });
+
+            // Save updated cartItems back to localStorage
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+            // Clear wishlist
+            localStorage.removeItem('wishlistItems');
+            alert("All items have been moved from wishlist to cart.");
         }
 
         function goBack() {

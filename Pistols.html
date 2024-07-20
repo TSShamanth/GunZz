@@ -221,7 +221,7 @@
                 <button class="add-to-cart" onclick="addToCart('Gloc-19', 999, 'images/gloc.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Gloc-19')">
+                <button class="add-to-wishlist" onclick="addToWishlist('Gloc-19', 999, 'images/gloc.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -235,7 +235,7 @@
                 <button class="add-to-cart" onclick="addToCart('Beretta 92FS', 899, 'images/Beretta 92FS.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Beretta 92FS')">
+                <button class="add-to-wishlist" onclick="addToWishlist('Beretta 92FS', 899, 'images/Beretta 92FS.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -249,7 +249,7 @@
                 <button class="add-to-cart" onclick="addToCart('Heckler & Koch VP9', 1099, 'images/Heckler & Koch VP9.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Heckler & Koch VP9')">
+                <button class="add-to-wishlist" onclick="addToWishlist('Heckler & Koch VP9', 1099, 'images/Heckler & Koch VP9.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -263,7 +263,7 @@
                 <button class="add-to-cart" onclick="addToCart('Sig Sauer P320', 799, 'images/Sig Sauer P320.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Sig Sauer P320')">
+                <button class="add-to-wishlist" onclick="addToWishlist('Sig Sauer P320', 799, 'images/Sig Sauer P320.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -277,7 +277,7 @@
                 <button class="add-to-cart" onclick="addToCart('Smith & Wesson M&P Shield', 1199, 'images/Smith & Wesson M&P Shield.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Smith & Wesson M&P Shield')">
+                <button class="add-to-wishlist" onclick="addToWishlist('Smith & Wesson M&P Shield', 1199, 'images/Smith & Wesson M&P Shield.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -291,7 +291,7 @@
                 <button class="add-to-cart" onclick="addToCart('Springfield XD-S', 999, 'images/Springfield XD-S.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Springfield XD-S')">
+                <button class="add-to-wishlist" onclick="addToWishlist('Springfield XD-S', 999, 'images/Springfield XD-S.jpeg.crdownload')">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -316,15 +316,45 @@
             alert(product + " has been added to the cart at $" + price);
         }
 
-        function addToWishlist(product) {
+        function addToWishlist(product, price, image) {
             let wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
             let existingItem = wishlistItems.find(item => item.product === product);
             if (existingItem) {
                 alert(product + " is already in the wishlist.");
             } else {
-                wishlistItems.push({ product: product });
+                wishlistItems.push({ product: product, price: price, image: image });
                 localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
                 alert(product + " has been added to the wishlist.");
+            }
+        }
+
+        function moveFromWishlistToCart(product) {
+            let wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            
+            let itemToMove = wishlistItems.find(item => item.product === product);
+            if (itemToMove) {
+                // Add item to cart
+                let existingItem = cartItems.find(item => item.product === product);
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cartItems.push({ 
+                        product: itemToMove.product, 
+                        price: itemToMove.price, 
+                        quantity: 1, 
+                        image: itemToMove.image 
+                    });
+                }
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                
+                // Remove item from wishlist
+                wishlistItems = wishlistItems.filter(item => item.product !== product);
+                localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
+                
+                alert(product + " has been moved to the cart.");
+            } else {
+                alert(product + " is not in the wishlist.");
             }
         }
 
