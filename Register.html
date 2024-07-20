@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your main stylesheet -->
+    <!-- Add Firebase SDK -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDPdzRRMsyHWhyp7ZlyWcXybAs8W-VsZYs",
+            authDomain: "gunzz-7e728.firebaseapp.com",
+            projectId: "gunzz-7e728",
+            storageBucket: "gunzz-7e728.appspot.com",
+            messagingSenderId: "1001831044978",
+            appId: "1:1001831044978:web:9a4952cd65986e980eafeb",
+            measurementId: "G-EFCE20H10M"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth();
+
+        // Function to validate and submit the registration form
+        async function registerUser(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Check if passwords match and meet criteria
+            if (password !== confirmPassword) {
+                document.getElementById('message').textContent = 'Passwords do not match';
+                return;
+            }
+
+            if (!isValidPassword(password)) {
+                document.getElementById('message').textContent = 'Password should be at least 6 characters long and contain at least one digit and one special character';
+                return;
+            }
+
+            try {
+                // Create user with email and password
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                // Store additional user data in Firestore
+                await setDoc(doc(db, 'users', user.uid), {
+                    email: email,
+                    phone: phone
+                });
+
+                // Show registration success message
+                document.getElementById('message').innerHTML = '<span style="color: green;">Registration successful &#10004;</span>';
+
+                // Clear form fields after successful registration
+                document.getElementById('registrationForm').reset();
+            } catch (error) {
+                document.getElementById('message').textContent = `Error: ${error.message}`;
+            }
+        }
+
+        // Function to validate password format
+        function isValidPassword(password) {
+            // Password should be at least 6 characters long and contain at least one digit and one special character
+            const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{6,}$/;
+            return passwordRegex.test(password);
+        }
+
+        // Function to toggle password visibility
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            const eyeIcon = document.getElementById('eyeIcon');
+
+            const type = passwordInput.type === 'password' ? 'text' : 'password';
+            passwordInput.type = type;
+            confirmPasswordInput.type = type;
+
+            // Toggle eye icon class for visibility
+            eyeIcon.classList.toggle('fa-eye-slash');
+        }
+
+        // Attach the registerUser function to the form submission
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('registrationForm').addEventListener('submit', registerUser);
+            document.getElementById('eyeIcon').addEventListener('click', togglePasswordVisibility);
+        });
+    </script>
+</head>
+<style>
+    /* Reset default browser styles */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        padding: 20px;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    #message {
+        color: green;
+        margin-top: 10px;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .login-link {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .login-link a {
+        color: #4CAF50;
+        text-decoration: none;
+    }
+
+    .login-link a:hover {
+        text-decoration: underline;
+    }
+
+    /* Eye icon styles */
+    .eye-icon {
+        position: relative;
+    }
+
+    .eye-icon i {
+        position: absolute;
+        right: 10px;
+        top: 35%;
+        cursor: pointer;
+    }
+
+    .eye-icon .fa-eye-slash {
+        display: none;
+    }
+</style>
+<body>
+    <h2>User Registration</h2>
+    <form id="registrationForm" method="post">
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="phone">Phone Number:</label><br>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required><br><br> <!-- Assuming 10-digit format -->
+
+        <label for="password">Password:</label><br>
+        <div class="eye-icon">
+            <input type="password" id="password" name="password" minlength="6" required>
+            
+        </div><br><br>
+
+        <label for="confirmPassword">Re-enter Password:</label><br>
+        <input type="password" id="confirmPassword" name="confirmPassword" minlength="6" required><br><br>
+
+        <input type="submit" value="Register">
+    </form>
+
+    <p id="message"></p> <!-- Message placeholder for showing validation messages -->
+
+    <div class="login-link">
+        <p>Already have an account? <a href="login.html">Login</a></p>
+    </div>
+
+    <!-- Font Awesome CDN for eye icon -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+</body>
+</html>

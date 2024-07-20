@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pistols</title>
+    <style>
+        /* Resetting default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basic styling for header */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            justify-content: space-between; /* Ensure elements are spaced appropriately */
+        }
+
+        .search-bar {
+            flex-grow: 1; /* Allow search bar to take up available space */
+            display: flex;
+            margin: 0 20px; /* Add some margin to space out from logo and buttons */
+        }
+
+        .search-bar input[type="text"] {
+            flex-grow: 1; /* Make input field take up remaining space */
+            padding: 12px;
+            font-size: 1.2rem; /* Increase font size */
+        }
+
+        .search-bar button {
+            padding: 12px 20px;
+            font-size: 1.2rem; /* Increase font size */
+        }
+
+        .header-content2 {
+            font-size: 1.2rem; /* Increase font size */
+            margin-left: auto; /* Align Home link to the rightmost side */
+        }
+        .header-content2 a {
+            color: #fff; /* Set link color to white */
+            text-decoration: none; /* Remove underline by default */
+            font-size: 1.2rem; /* Adjust font size as needed */
+        }
+
+        .header-content2 a:hover {
+            color: #bb86fc;
+            text-decoration: underline;
+        }
+
+        .logo h2 {
+            font-size: 25px;
+            color: #fff;
+        }
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 25px;
+        }
+        .logo a:hover {
+            color: #bb86fc;
+            text-decoration: underline;
+        }
+
+        .search-bar {
+            display: flex;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 8px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-right: none;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .search-bar button {
+            padding: 8px 15px;
+            font-size: 1rem;
+            background-color: #4CAF50;
+            color: white;
+            border: 1px solid #4CAF50;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            background-color: #45a049;
+        }
+
+        .profile-cart-icons a {
+            margin-left: 10px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .profile-cart-icons a:hover {
+            text-decoration: underline;
+        }
+
+        .profile .cart-icon {
+            margin-right: 10px;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Basic styling for products */
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .product {
+            width: 300px;
+            margin: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .product-details {
+            padding: 10px 0;
+        }
+
+        .product-details h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .product-details p {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .product-details button {
+            margin-top: 10px;
+            padding: 8px 15px;
+            font-size: 1rem;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .product-details button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Icon styling */
+        .product-details button img {
+            width: 18px;
+            margin-right: 5px;
+        }
+
+        /* Basic styling for footer */
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <h2><a href="Home_page.html">GunZz</a></h2>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button type="submit">Search</button>
+            </div>
+            <div class="profile">
+                <a href="cart.html" class="cart-icon">&#128722;</a>
+            </div>
+            <div class="header-content2">
+                <a href="Home_page.html">Home</a>
+            </div>
+        </div>
+    </header>
+    
+    <div class="products">
+        <div class="product">
+            <img src="images/gloc.jpeg" alt="Gloc-19">
+            <div class="product-details">
+                <h3>Gloc-19</h3>
+                <p>Price: $999</p>
+                <p>A compact, versatile 9mm pistol favored by law enforcement and civilians alike for its reliability and ease of use.</p>
+                <button class="add-to-cart" onclick="addToCart('Gloc-19', 999, 'A compact, versatile 9mm pistol favored by law enforcement and civilians alike for its reliability and ease of use.', 'images/gloc.jpeg')">
+                    <img src="images/cart.png" alt="Cart Icon"> Add to Cart
+                </button>
+                <button class="add-to-wishlist" onclick="addToWishlist('Gloc-19')">
+                    <img src="images/start.png" alt="Star Icon"> Add to Wishlist
+                </button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="images/Beretta_92FS.jpeg" alt="Beretta 92FS">
+            <div class="product-details">
+                <h3>Beretta 92FS</h3>
+                <p>Price: $899</p>
+                <p>A classic, full-size 9mm semi-automatic pistol used widely by military and police forces around the world.</p>
+                <button class="add-to-cart" onclick="addToCart('Beretta 92FS', 899, 'A classic, full-size 9mm semi-automatic pistol used widely by military and police forces around the world.', 'images/Beretta_92FS.jpeg')">
+                    <img src="images/cart.png" alt="Cart Icon"> Add to Cart
+                </button>
+                <button class="add-to-wishlist" onclick="addToWishlist('Beretta 92FS')">
+                    <img src="images/start.png" alt="Star Icon"> Add to Wishlist
+                </button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="images/Heckler_Koch_VP9.jpeg" alt="Heckler & Koch VP9">
+            <div class="product-details">
+                <h3>Heckler & Koch VP9</h3>
+                <p>Price: $1099</p>
+                <p>A well-engineered 9mm pistol with excellent ergonomics and a consistent trigger pull.</p>
+                <button class="add-to-cart" onclick="addToCart('Heckler & Koch VP9', 1099, 'A well-engineered 9mm pistol with excellent ergonomics and a consistent trigger pull.', 'images/Heckler_Koch_VP9.jpeg')">
+                    <img src="images/cart.png" alt="Cart Icon"> Add to Cart
+                </button>
+                <button class="add-to-wishlist" onclick="addToWishlist('Heckler & Koch VP9')">
+                    <img src="images/start.png" alt="Star Icon"> Add to Wishlist
+                </button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="images/Sig_Sauer_P320.jpeg" alt="Sig Sauer P320">
+            <div class="product-details">
+                <h3>Sig Sauer P320</h3>
+                <p>Price: $799</p>
+                <p>A modular, striker-fired pistol known for its accuracy, reliability, and customizable design.</p>
+                <button class="add-to-cart" onclick="addToCart('Sig Sauer P320', 799, 'A modular, striker-fired pistol known for its accuracy, reliability, and customizable design.', 'images/Sig_Sauer_P320.jpeg')">
+                    <img src="images/cart.png" alt="Cart Icon"> Add to Cart
+                </button>
+                <button class="add-to-wishlist" onclick="addToWishlist('Sig Sauer P320')">
+                    <img src="images/start.png" alt="Star Icon"> Add to Wishlist
+                </button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="images/Smith_Wesson_MP_Shield.jpeg" alt="Smith & Wesson M&P Shield">
+            <div class="product-details">
+                <h3>Smith & Wesson M&P Shield</h3>
+                <p>Price: $1199</p>
+                <p>A popular, slim, and lightweight 9mm handgun ideal for concealed carry.</p>
+                <button class="add-to-cart" onclick="addToCart('Smith & Wesson M&P Shield', 1199, 'A popular, slim, and lightweight 9mm handgun ideal for concealed carry.', 'images/Smith_Wesson_MP_Shield.jpeg')">
+                    <img src="images/cart.png" alt="Cart Icon"> Add to Cart
+                </button>
+                <button class="add-to-wishlist" onclick="addToWishlist('Smith & Wesson M&P Shield')">
+                    <img src="images/start.png" alt="Star Icon"> Add to Wishlist
+                </button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="images/Springfield_XD_S.jpeg" alt="Springfield XD-S">
+            <div class="product-details">
+                <h3>Springfield XD-S</h3>
+                <p>Price: $999</p>
+                <p> A compact, single-stack 9mm pistol designed for easy concealment and comfortable carry.</p>
+                <button class="add-to-cart" onclick="addToCart('Springfield XD-S', 999, 'A compact, single-stack 9mm pistol designed for easy concealment and comfortable carry.', 'images/Springfield_XD_S.jpeg')">
+                    <img src="images/cart.png" alt="Cart Icon"> Add to Cart
+                </button>
+                <button class="add-to-wishlist" onclick="addToWishlist('Springfield XD-S')">
+                    <img src="images/start.png" alt="Star Icon"> Add to Wishlist
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <!-- Add your footer content here -->
+        <p>&copy; 2024 My Store. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function addToCart(product, price, description, image) {
+            // Retrieve existing cart items from localStorage or initialize empty array
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+            // Check if item already exists in cart
+            let existingItem = cartItems.find(item => item.product === product);
+            if (existingItem) {
+                // If item exists, increase quantity
+                existingItem.quantity++;
+            } else {
+                // If item does not exist, add new item to cart
+                cartItems.push({ product: product, price: price, quantity: 1, description: description, image: image });
+            }
+
+            // Save updated cartItems back to localStorage
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+            // Provide feedback to user
+            alert(product + " has been added to the cart at $" + price);
+        }
+
+        function addToWishlist(product) {
+            alert(product + " has been added to the wishlist");
+        }
+    </script>
+</body>
+</html>
+

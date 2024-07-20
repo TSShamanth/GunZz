@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .profile-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        .profile-detail {
+            margin: 20px 0;
+        }
+        .profile-detail label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .profile-detail input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .button-container button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js"></script>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-detail">
+            <label for="userName">Name:</label>
+            <input type="text" id="userName" disabled>
+        </div>
+        <div class="profile-detail">
+            <label for="userEmail">Email:</label>
+            <input type="email" id="userEmail" disabled>
+        </div>
+        <div class="profile-detail">
+            <label for="userPhone">Phone:</label>
+            <input type="text" id="userPhone" disabled>
+        </div>
+        <div class="button-container">
+            <button id="updateButton">Update Info</button>
+            <button id="saveButton" style="display: none;">Save</button>
+        </div>
+    </div>
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        const userNameInput = document.getElementById('userName');
+        const userEmailInput = document.getElementById('userEmail');
+        const userPhoneInput = document.getElementById('userPhone');
+        const updateButton = document.getElementById('updateButton');
+        const saveButton = document.getElementById('saveButton');
+        let currentUser;
+
+        // Function to fetch and display user data
+        async function fetchUserData(user) {
+            try {
+                const userDoc = await db.collection('users').doc(user.uid).get();
+                if (userDoc.exists) {
+                    const userData = userDoc.data();
+                    userNameInput.value = userData.name;
+                    userEmailInput.value = userData.email;
+                    userPhoneInput.value = userData.phone;
+                } else {
+                    console.log('No such document!');
+                }
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        }
+
+        // Update user data
+        async function updateUserData(user) {
+            const newEmail = userEmailInput.value;
+            const newPhone = userPhoneInput.value;
+
+            try {
+                const emailExists = (await db.collection('users').where('email', '==', newEmail).get()).size > 0;
+                const phoneExists = (await db.collection('users').where('phone', '==', newPhone).get()).size > 0;
+
+                if (emailExists && newEmail !== currentUser.email) {
+                    alert('The email address already exists. Please choose a different one.');
+                    return;
+                }
+
+                if (phoneExists && newPhone !== currentUser.phone) {
+                    alert('The phone number already exists. Please choose a different one.');
+                    return;
+                }
+
+                await db.collection('users').doc(user.uid).update({
+                    email: newEmail,
+                    phone: newPhone
+                });
+
+                alert('User details updated successfully');
+                fetchUserData(user);
+                toggleInputFields(false);
+            } catch (error) {
+                console.error('Error updating user data:', error);
+            }
+        }
+
+        // Toggle input fields and buttons
+        function toggleInputFields(enable) {
+            userNameInput.disabled = !enable;
+            userEmailInput.disabled = !enable;
+            userPhoneInput.disabled = !enable;
+            updateButton.style.display = enable ? 'none' : 'inline-block';
+            saveButton.style.display = enable ? 'inline-block' : 'none';
+        }
+
+        // Firebase authentication state observer
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                currentUser = user;
+                fetchUserData(user);
+            } else {
+                console.log('No user is signed in.');
+            }
+        });
+
+        // Enable inputs on Update Info click
+        updateButton.addEventListener('click', () => {
+            toggleInputFields(true);
+        });
+
+        // Save updated data on Save click
+        saveButton.addEventListener('click', () => {
+            updateUserData(currentUser);
+        });
+    </script>
+</body>
+</html>

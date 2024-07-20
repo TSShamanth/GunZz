@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rifles</title>
+    <style>
+        /* Resetting default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basic styling for header */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            justify-content: space-between; /* Ensure elements are spaced appropriately */
+        }
+
+        .search-bar {
+            flex-grow: 1; /* Allow search bar to take up available space */
+            display: flex;
+            margin: 0 20px; /* Add some margin to space out from logo and buttons */
+        }
+
+        .search-bar input[type="text"] {
+            flex-grow: 1; /* Make input field take up remaining space */
+            padding: 12px;
+            font-size: 1.2rem; /* Increase font size */
+        }
+
+        .search-bar button {
+            padding: 12px 20px;
+            font-size: 1.2rem; /* Increase font size */
+        }
+
+        .header-content2 {
+            font-size: 1.2rem; /* Increase font size */
+            margin-left: auto; /* Align Home link to the rightmost side */
+        }
+        .header-content2 a {
+            color: #fff; /* Set link color to white */
+            text-decoration: none; /* Remove underline by default */
+            font-size: 1.2rem; /* Adjust font size as needed */
+        }
+
+        .header-content2 a:hover {
+            color: #bb86fc;
+            text-decoration: underline;
+        }
+
+        .logo h2 {
+            font-size: 25px;
+            color: #fff;
+        }
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 25px;
+        }
+        .logo a:hover {
+            color: #bb86fc;
+            text-decoration: underline;
+        }
+
+        .search-bar {
+            display: flex;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 8px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-right: none;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .search-bar button {
+            padding: 8px 15px;
+            font-size: 1rem;
+            background-color: #4CAF50;
+            color: white;
+            border: 1px solid #4CAF50;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            background-color: #45a049;
+        }
+
+        .profile-cart-icons a {
+            margin-left: 10px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .profile-cart-icons a:hover {
+            text-decoration: underline;
+        }
+        header .profile .cart-icon {
+            margin-right: 10px;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Basic styling for products */
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .product {
+            width: 300px;
+            margin: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .product-details {
+            padding: 10px 0;
+        }
+
+        .product-details h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .product-details p {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .product-details button {
+            margin-top: 10px;
+            padding: 8px 15px;
+            font-size: 1rem;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .product-details button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Icon styling */
+        .product-details button img {
+            width: 18px;
+            margin-right: 5px;
+        }
+
+        /* Basic styling for footer */
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <h2><a href="Home_page.html">GunZz</a></h2>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button type="submit">Search</button>
+            </div>
+            <div class="profile">
+                <a href="cart.html" class="cart-icon">&#128722;</a>
+            </div>
+            <div class="header-content2">
+                <a href="Home_page.html">Home</a>
+            </div>
+        </div>
+    </header>
+    
+
+    <div class="products">
+        <div class="product">
+            <img src="images/Remington 870.jpeg.crdownload" alt="Rifle 1">
+            <div class="product-details">
+                <h3>Remington 870</h3>
+                <p>Price: $999</p>
+                <p>A widely used pump-action shotgun known for its reliability and versatility in various roles, from hunting to home defense.</p>
+                <button class="add-to-cart" onclick="addToCart('Remington 870', 999, 'A widely used pump-action shotgun known for its reliability and versatility in various roles, from hunting to home defense.', 'images/Remington 870.jpeg.crdownload')">
+                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
+                </button>
+                <button class="add-to-wishlist" onclick="addToWishlist('Remington 870')">
+                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
+                </button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="images/Mossberg 500.jpeg.crdownload" alt="Rifle 2">
+            <div class="product-details">
+                <h3>Mossberg 500</h3>
+                <p>Price: $899</p>
+                <p>Another popular pump-action shotgun, valued for its rugged design and adaptability for different types of shooting.</p>
+                <button class="add-to-cart" onclick="addToCart('Mossberg 500', 899, 'Another popular pump-action shotgun, valued for its rugged design and adaptability for different types of shooting.', 'images/Mossberg 500.jpeg.crdownload')">
+                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
+                </button>
+                <button class="add-to-wishlist" onclick="addToWishlist('Mossberg 500')">
+                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
+                </button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="images/Benelli M4.jpeg.crdownload" alt="Rifle 3">
+            <div class="product-details">
+                <h3>Benelli M4</h3>
+                <p>Price: $1099</p>
+                <p>A semi-automatic tactical shotgun renowned for its performance, reliability, and advanced features for military and law enforcement use.</p>
+                <button class="add-to-cart" onclick="addToCart('Benelli M4', 1099, 'A semi-automatic tactical shotgun renowned for its performance, reliability, and advanced features for military and law enforcement use.', 'images/Benelli M4.jpeg.crdownload')">
+                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
+                </button>
+                <button class="add-to-wishlist" onclick="addToWishlist('Benelli M4')">
+                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
+                </button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="images/Browning BPS.jpeg.crdownload" alt="Rifle 4">
+            <div class="product-details">
+                <h3>Browning BPS</h3>
+                <p>Price: $799</p>
+                <p>A robust pump-action shotgun featuring a bottom-ejection design, making it a favorite among left-handed shooters and hunters.</p>
+                <button class="add-to-cart" onclick="addToCart('Browning BPS', 799, 'A robust pump-action shotgun featuring a bottom-ejection design, making it a favorite among left-handed shooters and hunters.', 'images/Browning BPS.jpeg.crdownload')">
+                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
+                </button>
+                <button class="add-to-wishlist" onclick="addToWishlist('Browning BPS')">
+                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
+                </button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="images/Winchester Model 1300.jpeg.crdownload" alt="Rifle 5">
+            <div class="product-details">
+                <h3>Winchester Model 1300</h3>
+                <p>Price: $1199</p>
+                <p>Known for its speed and smooth action, this pump-action shotgun is popular for hunting and sport shooting.</p>
+                <button class="add-to-cart" onclick="addToCart('Winchester Model 1300', 1199, 'Known for its speed and smooth action, this pump-action shotgun is popular for hunting and sport shooting.', 'images/Winchester Model 1300.jpeg.crdownload')">
+                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
+                </button>
+                <button class="add-to-wishlist" onclick="addToWishlist('Winchester Model 1300')">
+                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
+                </button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="images/Ruger Redhawk.jpeg.crdownload" alt="Rifle 6">
+            <div class="product-details">
+                <h3>Remington Versa Max</h3>
+                <p>Price: $999</p>
+                <p>A semi-automatic shotgun designed for versatility, capable of handling various loads with a self-regulating gas system.</p>
+                <button class="add-to-cart" onclick="addToCart('Remington Versa Max', 999, 'A semi-automatic shotgun designed for versatility, capable of handling various loads with a self-regulating gas system.', 'images/Ruger Redhawk.jpeg.crdownload')">
+                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
+                </button>
+                <button class="add-to-wishlist" onclick="addToWishlist('Remington Versa Max')">
+                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <!-- Add your footer content here -->
+        <p>&copy; 2024 My Store. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function addToCart(product, price, description, image) {
+            const item = {
+                product: product,
+                price: price,
+                description: description,
+                image: image,
+                quantity: 1 // Default quantity
+            };
+
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            
+            // Check if item already exists in cart
+            const existingItem = cartItems.find(item => item.product === product);
+            if (existingItem) {
+                // If item exists, increase quantity
+                existingItem.quantity++;
+            } else {
+                // If item does not exist, add new item to cart
+                cartItems.push(item);
+            }
+
+            // Save updated cartItems back to localStorage
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            alert(product + " has been added to the cart.");
+        }
+
+        function addToWishlist(product) {
+            alert(product + " has been added to the wishlist");
+        }
+    </script>
+</body>
+</html>

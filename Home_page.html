@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        header .search-bar {
+            display: flex;
+            align-items: center;
+            width: 50%;
+            position: relative;
+        }
+
+        header .search-bar input {
+            width: calc(100% - 40px); /* Adjusted width for search input */
+            padding: 10px 40px 10px 20px; /* Adjust padding for icon */
+            border-radius: 4px;
+            border: none;
+            font-size: 16px;
+        }
+
+        header .search-bar .search-icon {
+            position: absolute;
+            right: 10px;
+            color: #999;
+            font-size: 18px;
+        }
+
+        header .profile {
+            position: relative;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        header .profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        header .profile .cart-icon {
+            margin-right: 10px;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        header .profile .arrow {
+            margin-left: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        header .profile .dropdown {
+            display: none;
+            position: absolute;
+            top: 60px; /* Adjusted top position */
+            right: 0;
+            background-color: white;
+            color: black;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            z-index: 1000; /* Ensure dropdown is above other elements */
+        }
+
+        header .profile .dropdown a {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+        }
+
+        header .profile .dropdown a:hover {
+            background-color: #f0f0f0;
+        }
+
+        header .profile .dropdown a .icon {
+            margin-right: 10px;
+            font-size: 18px; /* Adjust size as needed */
+        }
+
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .category {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none; /* Remove underline from links */
+            color: black; /* Ensure text color is consistent */
+        }
+
+        .category img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .category-title {
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .highlight {
+            border: 2px solid #ff0; /* Yellow border for highlight */
+            background-color: #f0f0f0; /* Light grey background for highlight */
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            $('.arrow').click(function() {
+                $('.dropdown').toggle();
+                $('.arrow').toggleClass('up');
+            });
+
+            $(document).click(function(event) {
+                if (!$(event.target).closest('.profile').length) {
+                    $('.dropdown').hide();
+                    $('.arrow').removeClass('up');
+                }
+            });
+
+            // Handle search functionality
+            $('.search-bar input').on('keypress', function(e) {
+                if (e.which === 13) { // Enter key pressed
+                    const searchQuery = $(this).val().toLowerCase();
+                    const productPages = {
+                        'rifles': 'Rifles.html',
+                        'pistols': 'Pistols.html',
+                        'revolvers': 'Revolver.html',
+                        'shotguns': 'Shotguns.html',
+                        'snipers': 'Snipers.html',
+                        'air soft': 'Airsoft.html',
+                        'airsoft': 'Airsoft.html'
+                    };
+
+                    if (productPages[searchQuery]) {
+                        window.location.href = productPages[searchQuery];
+                    } else {
+                        // Assuming products are stored in a similar structure
+                        const product = $('div.product').filter(function() {
+                            return $(this).find('h3').text().toLowerCase() === searchQuery;
+                        });
+
+                        if (product.length > 0) {
+                            const productId = product.attr('id'); // Ensure each product has a unique id
+                            window.location.href = `ProductPage.html#${productId}`;
+                        } else {
+                            alert('Product not found');
+                        }
+                    }
+                }
+            });
+
+            // Redirect to cart page
+            $('.cart-icon').click(function() {
+                window.location.href = 'cart.html';
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">GunZz</div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <span class="search-icon">&#128269;</span> <!-- Unicode for magnifying glass icon -->
+        </div>
+        <div class="profile">
+            <span class="cart-icon">&#128722;</span> <!-- Unicode for shopping cart icon -->
+            <img src="images/pfp.png.crdownload" alt="Profile Picture">
+            <span class="arrow">&#9660;</span> <!-- Unicode for down arrow -->
+            <div class="dropdown">
+                <!-- <a href="profile.html">
+                    <span class="icon">&#128100;</span> <!-- Unicode for profile icon -->
+                    <!-- Profile 
+                </a> -->
+                <a href="orders.html">
+                    <span class="icon">&#128179;</span> <!-- Unicode for order icon -->
+                    Orders
+                </a>
+                <a href="wishlist.html">
+                    <span class="icon">&#9733;</span> <!-- Unicode for wishlist icon -->
+                    Wishlist
+                </a>
+                <a href="Login.html">
+                    <span class="icon"><i class="fas fa-sign-out-alt"></i></span> <!-- Font Awesome logout icon -->
+                    Logout
+                </a>
+            </div>
+        </div>
+    </header>
+    
+
+    <div class="categories">
+        <a href="Rifles.html" class="category">
+            <img src="images/rifles.jpeg.crdownload" alt="Rifles">
+            <div class="category-title">Rifles</div>
+        </a>
+        <a href="Pistols.html" class="category">
+            <img src="images/pistol.jpeg.crdownload" alt="Pistols">
+            <div class="category-title">Pistols</div>
+        </a>
+        <a href="Revolver.html" class="category">
+            <img src="images/revolver.jpeg.crdownload" alt="Revolvers">
+            <div class="category-title">Revolvers</div>
+        </a>
+        <a href="Shortguns.html" class="category">
+            <img src="images/shortgun.jpeg.crdownload" alt="Shotguns">
+            <div class="category-title">Shotguns</div>
+        </a>
+        <a href="Snipers.html" class="category">
+            <img src="images/sniper.jpeg.crdownload" alt="Snipers">
+            <div class="category-title">Snipers</div>
+        </a>
+        <a href="Airsoft.html" class="category">
+            <img src="images/airsoft.jpeg" alt="Air Soft">
+            <div class="category-title">Air Soft</div>
+        </a>
+    </div>
+</body>
+</html>
