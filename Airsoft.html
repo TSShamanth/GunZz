@@ -217,7 +217,7 @@
                 <h3>Tokyo Marui M4A1</h3>
                 <p>Price: $999</p>
                 <p>A popular and reliable AEG (Automatic Electric Gun) known for its durability and excellent performance in various airsoft scenarios.</p>
-                <button class="add-to-cart" onclick="addToCart('Tokyo Marui M4A1', 999, 'A popular and reliable AEG (Automatic Electric Gun) known for its durability and excellent performance in various airsoft scenarios.', 'images/Tokyo Marui M4A1.jpeg.crdownload')">
+                <button class="add-to-cart" onclick="addToCart('Tokyo Marui M4A1', 999, 'images/Tokyo Marui M4A1.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
                 <button class="add-to-wishlist" onclick="addToWishlist('Tokyo Marui M4A1')">
@@ -231,7 +231,7 @@
                 <h3>Krytac Trident MK2</h3>
                 <p>Price: $899</p>
                 <p>A high-quality AEG renowned for its robust build and consistent accuracy, often favored by competitive players.</p>
-                <button class="add-to-cart" onclick="addToCart('Krytac Trident MK2', 899, 'A high-quality AEG renowned for its robust build and consistent accuracy, often favored by competitive players.', 'images/Krytac Trident MK2.jpeg.crdownload')">
+                <button class="add-to-cart" onclick="addToCart('Krytac Trident MK2', 899, 'images/Krytac Trident MK2.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
                 <button class="add-to-wishlist" onclick="addToWishlist('Krytac Trident MK2')">
@@ -245,7 +245,7 @@
                 <h3>G&G Combat Machine M4</h3>
                 <p>Price: $1099</p>
                 <p>An affordable and dependable AEG with good performance and durability, making it a popular choice for beginners and casual players.</p>
-                <button class="add-to-cart" onclick="addToCart('G&G Combat Machine M4', 1099, 'An affordable and dependable AEG with good performance and durability, making it a popular choice for beginners and casual players.', 'images/G&G Combat Machine M4.jpeg.crdownload')">
+                <button class="add-to-cart" onclick="addToCart('G&G Combat Machine M4', 1099, 'images/G&G Combat Machine M4.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
                 <button class="add-to-wishlist" onclick="addToWishlist('G&G Combat Machine M4')">
@@ -259,7 +259,7 @@
                 <h3>VFC HK416</h3>
                 <p>Price: $799</p>
                 <p>A premium AEG replicating the HK416 rifle, praised for its realism, build quality, and performance in tactical airsoft games.</p>
-                <button class="add-to-cart" onclick="addToCart('VFC HK416', 799, 'A premium AEG replicating the HK416 rifle, praised for its realism, build quality, and performance in tactical airsoft games.', 'images/VFC HK416.jpeg.crdownload')">
+                <button class="add-to-cart" onclick="addToCart('VFC HK416', 799, 'images/VFC HK416.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
                 <button class="add-to-wishlist" onclick="addToWishlist('VFC HK416')">
@@ -273,7 +273,7 @@
                 <h3>ASG Scorpion Evo 3 A1</h3>
                 <p>Price: $1199</p>
                 <p>A compact and highly customizable AEG featuring advanced internals and a unique design, popular for its versatility and reliability.</p>
-                <button class="add-to-cart" onclick="addToCart('ASG Scorpion Evo 3 A1', 1199, 'A compact and highly customizable AEG featuring advanced internals and a unique design, popular for its versatility and reliability.', 'images/ASG Scorpion Evo 3 A1.jpeg.crdownload')">
+                <button class="add-to-cart" onclick="addToCart('ASG Scorpion Evo 3 A1', 1199, 'images/ASG Scorpion Evo 3 A1.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
                 <button class="add-to-wishlist" onclick="addToWishlist('ASG Scorpion Evo 3 A1')">
@@ -287,7 +287,7 @@
                 <h3>CheyTac M200 Intervention</h3>
                 <p>Price: $999</p>
                 <p>A bolt-action sniper rifle designed for long-range shooting, notable for its advanced ballistics and ability to engage targets at extreme distances.</p>
-                <button class="add-to-cart" onclick="addToCart('CheyTac M200 Intervention', 999, 'A bolt-action sniper rifle designed for long-range shooting, notable for its advanced ballistics and ability to engage targets at extreme distances.', 'images/CheyTac M200 Intervention.jpeg.crdownload')">
+                <button class="add-to-cart" onclick="addToCart('CheyTac M200 Intervention', 999, 'images/CheyTac M200 Intervention.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
                 <button class="add-to-wishlist" onclick="addToWishlist('CheyTac M200 Intervention')">
@@ -303,11 +303,10 @@
     </footer>
 
     <script>
-        function addToCart(product, price, description, image) {
+        function addToCart(product, price, image) {
             const item = {
                 product: product,
                 price: price,
-                description: description,
                 image: image,
                 quantity: 1 // Default quantity
             };
@@ -325,7 +324,20 @@
         }
 
         function addToWishlist(product) {
-            alert(product + " has been added to the wishlist");
+            // Retrieve existing wishlist items from localStorage or initialize empty array
+            let wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
+
+            // Check if item already exists in wishlist
+            let existingItem = wishlistItems.find(item => item.product === product);
+            if (existingItem) {
+                alert(product + " is already in the wishlist.");
+            } else {
+                // If item does not exist, add new item to wishlist
+                wishlistItems.push({ product: product });
+                // Save updated wishlistItems back to localStorage
+                localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
+                alert(product + " has been added to the wishlist.");
+            }
         }
     </script>
 </body>

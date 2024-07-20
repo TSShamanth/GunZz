@@ -25,36 +25,36 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-            justify-content: space-between; /* Ensure elements are spaced appropriately */
+            justify-content: space-between;
         }
 
         .search-bar {
-            flex-grow: 1; /* Allow search bar to take up available space */
+            flex-grow: 1;
             display: flex;
-            margin: 0 20px; /* Add some margin to space out from logo and buttons */
+            margin: 0 20px;
         }
 
         .search-bar input[type="text"] {
-            flex-grow: 1; /* Make input field take up remaining space */
+            flex-grow: 1;
             padding: 12px;
-            font-size: 1.2rem; /* Increase font size */
+            font-size: 1.2rem;
         }
 
         .search-bar button {
             padding: 12px 20px;
-            font-size: 1.2rem; /* Increase font size */
+            font-size: 1.2rem;
         }
 
         .header-content2 {
-            font-size: 1.2rem; /* Increase font size */
-            margin-left: auto; /* Align Home link to the rightmost side */
-        }
-        .header-content2 a {
-            color: #fff; /* Set link color to white */
-            text-decoration: none; /* Remove underline by default */
-            font-size: 1.2rem; /* Adjust font size as needed */
+            font-size: 1.2rem;
+            margin-left: auto;
         }
 
+        .header-content2 a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
 
         .header-content2 a:hover {
             color: #bb86fc;
@@ -65,11 +65,13 @@
             font-size: 25px;
             color: #fff;
         }
+
         .logo a {
             color: #fff;
             text-decoration: none;
             font-size: 25px;
         }
+
         .logo a:hover {
             color: #bb86fc;
             text-decoration: underline;
@@ -111,6 +113,7 @@
         .profile-cart-icons a:hover {
             text-decoration: underline;
         }
+
         header .profile .cart-icon {
             margin-right: 10px;
             font-size: 24px;
@@ -140,7 +143,7 @@
 
         .product img {
             width: 100%;
-            /* height: 200px; */
+            height: auto; /* Keep original aspect ratio */
             object-fit: cover;
             border-radius: 5px;
         }
@@ -201,8 +204,8 @@
                 <h2><a href="Home_page.html">GunZz</a></h2>
             </div>
             <div class="search-bar">
-                <input type="text" placeholder="Search...">
-                <button type="submit">Search</button>
+                <input type="text" id="searchInput" placeholder="Search...">
+                <button type="button" onclick="searchProduct()">Search</button>
             </div>
             <div class="profile">
                 <a href="cart.html" class="cart-icon">&#128722;</a>
@@ -215,85 +218,86 @@
 
     <div class="products">
         <div class="product">
-            <img src="images/AK.jpeg.crdownload" alt="Rifle 1">
+            <img src="images/AK.jpeg.crdownload" alt="AK-47">
             <div class="product-details">
                 <h3>AK-47</h3>
                 <p>Price: $999</p>
                 <p>A widely used and iconic Soviet-designed assault rifle known for its durability and simplicity.</p>
-                <button class="add-to-cart" onclick="addToCart('AK-47', 999)">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
+                <button class="add-to-cart" onclick="addToCart('AK-47', 999, 'images/AK.jpeg.crdownload')">
+                    <img src="images/cart.png.crdownload" alt="Cart Icon" style="width: 18px; vertical-align: middle; margin-right: 5px;">
+                    Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('AK-47')">
+                <button class="add-to-wishlist" onclick="addToWishlist('AK-47', 999)">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
         </div>
         <div class="product">
-            <img src="images/AR-15.jpeg.crdownload" alt="Rifle 2">
+            <img src="images/AR-15.jpeg.crdownload" alt="AR-15">
             <div class="product-details">
                 <h3>AR-15</h3>
                 <p>Price: $899</p>
                 <p>A standard-issue assault rifle for the U.S. military, renowned for its accuracy and lightweight design.</p>
-                <button class="add-to-cart" onclick="addToCart('AR-15', 899)">
+                <button class="add-to-cart" onclick="addToCart('AR-15', 899, 'images/AR-15.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('AR-15')">
+                <button class="add-to-wishlist" onclick="addToWishlist('AR-15', 899)">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
         </div>
         <div class="product">
-            <img src="images/hk416.jpeg.crdownload" alt="Rifle 3">
+            <img src="images/hk416.jpeg.crdownload" alt="HK-416">
             <div class="product-details">
                 <h3>HK-416</h3>
                 <p>Price: $1099</p>
                 <p>A German-engineered rifle that combines the best features of the M16/M4 with a gas-piston operating system.</p>
-                <button class="add-to-cart" onclick="addToCart('HK-416', 1099)">
+                <button class="add-to-cart" onclick="addToCart('HK-416', 1099, 'images/hk416.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('HK-416')">
+                <button class="add-to-wishlist" onclick="addToWishlist('HK-416', 1099)">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
         </div>
         <div class="product">
-            <img src="images/tar21.jpeg.crdownload" alt="Rifle 4">
+            <img src="images/tar21.jpeg.crdownload" alt="TAR-21">
             <div class="product-details">
                 <h3>TAR-21</h3>
                 <p>Price: $799</p>
                 <p>An Israeli bullpup rifle designed for reliability and ease of use in close-quarters combat.</p>
-                <button class="add-to-cart" onclick="addToCart('TAR-21', 799)">
+                <button class="add-to-cart" onclick="addToCart('TAR-21', 799, 'images/tar21.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('TAR-21')">
+                <button class="add-to-wishlist" onclick="addToWishlist('TAR-21', 799)">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
         </div>
         <div class="product">
-            <img src="images/aug.jpeg.crdownload" alt="Rifle 5">
+            <img src="images/aug.jpeg.crdownload" alt="AUG">
             <div class="product-details">
                 <h3>AUG</h3>
                 <p>Price: $1199</p>
                 <p>An Austrian bullpup assault rifle noted for its compact design and integrated optical sight.</p>
-                <button class="add-to-cart" onclick="addToCart('AUG', 1199)">
+                <button class="add-to-cart" onclick="addToCart('AUG', 1199, 'images/aug.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('AUG')">
+                <button class="add-to-wishlist" onclick="addToWishlist('AUG', 1199)">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
         </div>
         <div class="product">
-            <img src="images/scar.jpeg.crdownload" alt="Rifle 6">
+            <img src="images/scar.jpeg.crdownload" alt="SCAR">
             <div class="product-details">
                 <h3>SCAR</h3>
                 <p>Price: $999</p>
                 <p>A modular assault rifle used by U.S. special forces, offering high versatility with different calibers.</p>
-                <button class="add-to-cart" onclick="addToCart('SCAR', 999)">
+                <button class="add-to-cart" onclick="addToCart('SCAR', 999, 'images/scar.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('SCAR')">
+                <button class="add-to-wishlist" onclick="addToWishlist('SCAR', 999)">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -301,62 +305,37 @@
     </div>
 
     <footer>
-        <!-- Add your footer content here -->
         <p>&copy; 2024 My Store. All rights reserved.</p>
     </footer>
 
     <script>
-        function addToCart(product, price) {
-            // Retrieve existing cart items from localStorage or initialize empty array
+        function addToCart(product, price, image) {
             let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-
-            // Check if item already exists in cart
             let existingItem = cartItems.find(item => item.product === product);
             if (existingItem) {
-                // If item exists, increase quantity
                 existingItem.quantity++;
             } else {
-                // If item does not exist, add new item to cart
-                cartItems.push({ product: product, price: price, quantity: 1 });
+                cartItems.push({ product: product, price: price, quantity: 1, image: image });
             }
-
-            // Save updated cartItems back to localStorage
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
-
-            // Provide feedback to user
             alert(product + " has been added to the cart at $" + price);
         }
 
-        function addToWishlist(product) {
-            alert(product + " has been added to the wishlist");
-        }
-    </script>
-    <script>
-        function addToCart(product, price, description, image) {
-            const item = {
-                product: product,
-                price: price,
-                description: description,
-                image: image,
-                quantity: 1 // Default quantity
-            };
-
-            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-            cartItems.push(item);
-            localStorage.setItem('cartItems', JSON.stringify(cartItems));
-            alert(product + " has been added to the cart.");
+        function addToWishlist(product, price) {
+            let wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
+            let existingItem = wishlistItems.find(item => item.product === product);
+            if (existingItem) {
+                alert(product + " is already in the wishlist.");
+            } else {
+                wishlistItems.push({ product: product, price: price });
+                localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
+                alert(product + " has been added to the wishlist.");
+            }
         }
 
-        function goBack() {
-            window.history.back();
-        }
-        
-    </script>
-    <script>
         function searchProduct() {
             const searchInput = document.getElementById('searchInput').value.toLowerCase();
             const products = document.querySelectorAll('.product');
-            
             products.forEach(product => {
                 const productName = product.querySelector('h3').textContent.toLowerCase();
                 if (productName.includes(searchInput)) {
@@ -366,23 +345,6 @@
                 }
             });
         }
-    
-        function addToCart(product, price) {
-            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-            let existingItem = cartItems.find(item => item.product === product);
-            if (existingItem) {
-                existingItem.quantity++;
-            } else {
-                cartItems.push({ product: product, price: price, quantity: 1 });
-            }
-            localStorage.setItem('cartItems', JSON.stringify(cartItems));
-            alert(product + " has been added to the cart at $" + price);
-        }
-    
-        function addToWishlist(product) {
-            alert(product + " has been added to the wishlist");
-        }
     </script>
-    
 </body>
 </html>

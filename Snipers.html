@@ -55,7 +55,6 @@
             font-size: 1.2rem; /* Adjust font size as needed */
         }
 
-
         .header-content2 a:hover {
             color: #bb86fc;
             text-decoration: underline;
@@ -219,10 +218,10 @@
                 <h3>Remington 700</h3>
                 <p>Price: $999</p>
                 <p>A versatile bolt-action rifle widely used in military, law enforcement, and hunting applications, known for its accuracy and reliability.</p>
-                <button class="add-to-cart" onclick="addToCart('AK-47', 999)">
+                <button class="add-to-cart" onclick="addToCart('Remington 700', 999, 'images/Remington 700.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('AK-47')">
+                <button class="add-to-wishlist" onclick="addToWishlist('Remington 700', 999)">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -233,24 +232,24 @@
                 <h3>M40 Rifle</h3>
                 <p>Price: $899</p>
                 <p>A bolt-action sniper rifle used by the U.S. Marine Corps, renowned for its precision and effectiveness in long-range engagements.</p>
-                <button class="add-to-cart" onclick="addToCart('AR-15', 899)">
+                <button class="add-to-cart" onclick="addToCart('M40 Rifle', 899, 'images/M40 Rifle.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('AR-15')">
+                <button class="add-to-wishlist" onclick="addToWishlist('M40 Rifle', 899)">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
         </div>
         <div class="product">
-            <img src="images/Accuracy International AXMC.jpeg.crdownload" alt="Rifle 3">
+            <img src="images/Accuracy International AXMC.jpeg" alt="Rifle 3">
             <div class="product-details">
                 <h3>Accuracy International AXMC</h3>
                 <p>Price: $1099</p>
                 <p>A modular bolt-action sniper rifle favored for its adaptability and precision, used by military and police forces around the world.</p>
-                <button class="add-to-cart" onclick="addToCart('HK-416', 1099)">
+                <button class="add-to-cart" onclick="addToCart('Accuracy International AXMC', 1099, 'images/Accuracy International AXMC.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('HK-416')">
+                <button class="add-to-wishlist" onclick="addToWishlist('Accuracy International AXMC', 1099)">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -261,10 +260,10 @@
                 <h3>Barrett M82 (M107)</h3>
                 <p>Price: $799</p>
                 <p>A semi-automatic .50 BMG rifle known for its extreme long-range capability and powerful impact, often used in anti-materiel roles.</p>
-                <button class="add-to-cart" onclick="addToCart('TAR-21', 799)">
+                <button class="add-to-cart" onclick="addToCart('Barrett M82 (M107)', 799, 'images/Barrett M82 (M107).png.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('TAR-21')">
+                <button class="add-to-wishlist" onclick="addToWishlist('Barrett M82 (M107)', 799)">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -272,13 +271,13 @@
         <div class="product">
             <img src="images/Sako TRG.jpeg.crdownload" alt="Rifle 5">
             <div class="product-details">
-                <h3>Winchester Model 1300</h3>
-                <p>Sako TRG</p>
+                <h3>Sako TRG</h3>
+                <p>Price: $1199</p>
                 <p>A high-precision bolt-action sniper rifle used by military and law enforcement, praised for its accuracy and ergonomics.</p>
-                <button class="add-to-cart" onclick="addToCart('AUG', 1199)">
+                <button class="add-to-cart" onclick="addToCart('Sako TRG', 1199, 'images/Sako TRG.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('AUG')">
+                <button class="add-to-wishlist" onclick="addToWishlist('Sako TRG', 1199)">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -289,10 +288,10 @@
                 <h3>CheyTac M200 Intervention</h3>
                 <p>Price: $999</p>
                 <p>A bolt-action sniper rifle designed for long-range shooting, notable for its advanced ballistics and ability to engage targets at extreme distances.</p>
-                <button class="add-to-cart" onclick="addToCart('SCAR', 999)">
+                <button class="add-to-cart" onclick="addToCart('CheyTac M200 Intervention', 999, 'images/CheyTac M200 Intervention.jpeg.crdownload')">
                     <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('SCAR')">
+                <button class="add-to-wishlist" onclick="addToWishlist('CheyTac M200 Intervention', 999)">
                     <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
                 </button>
             </div>
@@ -305,37 +304,10 @@
     </footer>
 
     <script>
-        function addToCart(product, price) {
-            // Retrieve existing cart items from localStorage or initialize empty array
-            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-
-            // Check if item already exists in cart
-            let existingItem = cartItems.find(item => item.product === product);
-            if (existingItem) {
-                // If item exists, increase quantity
-                existingItem.quantity++;
-            } else {
-                // If item does not exist, add new item to cart
-                cartItems.push({ product: product, price: price, quantity: 1 });
-            }
-
-            // Save updated cartItems back to localStorage
-            localStorage.setItem('cartItems', JSON.stringify(cartItems));
-
-            // Provide feedback to user
-            alert(product + " has been added to the cart at $" + price);
-        }
-
-        function addToWishlist(product) {
-            alert(product + " has been added to the wishlist");
-        }
-    </script>
-    <script>
-        function addToCart(product, price, description, image) {
+        function addToCart(product, price, image) {
             const item = {
                 product: product,
                 price: price,
-                description: description,
                 image: image,
                 quantity: 1 // Default quantity
             };
@@ -344,6 +316,23 @@
             cartItems.push(item);
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
             alert(product + " has been added to the cart.");
+        }
+
+        function addToWishlist(product, price) {
+            // Retrieve existing wishlist items from localStorage or initialize empty array
+            let wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
+
+            // Check if item already exists in wishlist
+            let existingItem = wishlistItems.find(item => item.product === product);
+            if (existingItem) {
+                alert(product + " is already in the wishlist.");
+            } else {
+                // If item does not exist, add new item to wishlist
+                wishlistItems.push({ product: product, price: price });
+                // Save updated wishlistItems back to localStorage
+                localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
+                alert(product + " has been added to the wishlist.");
+            }
         }
 
         function goBack() {
