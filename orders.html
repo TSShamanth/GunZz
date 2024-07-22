@@ -6,32 +6,67 @@
     <title>Orders</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             background-color: #f0f0f0;
             margin: 20px;
+            font-family: Arial, sans-serif;
         }
 
         header {
-            background-color: #333;
+            background-color: #222; /* Darker color for header */
             color: #fff;
             padding: 10px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        header:hover {
+            background-color: #333; /* Slightly lighter on hover */
         }
 
         .logo h2 {
             font-size: 25px;
             color: #fff;
+            transition: color 0.3s ease-in-out;
         }
 
         .logo a {
             color: #fff;
             text-decoration: none;
             font-size: 25px;
+            transition: color 0.3s ease-in-out;
         }
 
         .logo a:hover {
             color: #bb86fc;
             text-decoration: underline;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-content2 {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-content2 a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+            margin-left: 15px;
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .header-content2 a:hover {
+            color: #bb86fc;
+            transform: scale(1.1); /* Slightly enlarge on hover */
         }
 
         .orders {
@@ -41,6 +76,12 @@
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
             padding: 20px;
             margin-top: 20px;
+            transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .orders:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+            transform: translateY(-5px); /* Slightly lift on hover */
         }
 
         .order-item {
@@ -49,6 +90,12 @@
             padding-bottom: 20px;
             border-bottom: 1px solid #ccc;
             align-items: center;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .order-item:hover {
+            background-color: #f9f9f9; /* Change background on hover */
+            transform: scale(1.02); /* Slightly enlarge on hover */
         }
 
         .order-item img {
@@ -57,23 +104,61 @@
             object-fit: cover;
             border-radius: 5px;
             margin-right: 15px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .order-item img:hover {
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+
+        .order-item-details h3 {
+            margin: 0;
+            font-size: 18px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .order-item-details p {
+            margin: 5px 0;
+            color: #555;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .order-item-details h3:hover,
+        .order-item-details p:hover {
+            color: #bb86fc; /* Change color on hover */
         }
 
         footer {
             text-align: center;
             padding: 10px 0;
-            background-color: #333;
+            background-color: #222; /* Darker color for footer */
             color: #fff;
             position: fixed;
             bottom: 0;
             width: 100%;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        footer:hover {
+            background-color: #333; /* Slightly lighter on hover */
+        }
+
+        footer a {
+            color: #bb86fc;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+
+        footer a:hover {
+            color: #fff;
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
+            <div class="header-content">
                 <div class="logo">
                     <h2><a href="Home_page.html">GunZz</a></h2>
                 </div>
@@ -81,7 +166,9 @@
                     <h2>Orders</h2>
                 </div>
                 <div class="header-content2">
-                    <a href="Home_page.html">Home</a>
+                    <a href="Home_page.html"><i class="fas fa-home"></i></a> <!-- Home icon -->
+                    <a href="cart.html"><i class="fas fa-shopping-cart"></i></a> <!-- Cart icon -->
+                    <a href="wishlist.html"><i class="fas fa-star"></i></a> <!-- Wishlist icon -->
                 </div>
             </div>
         </div>

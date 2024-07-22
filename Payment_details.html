@@ -7,26 +7,63 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #e9ecef;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
         }
 
         .container {
             background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             max-width: 600px;
             width: 100%;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
         }
 
         h1 {
-            font-size: 24px;
+            font-size: 28px;
             text-align: center;
+            color: #343a40;
             margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #495057;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+            transform: scale(1.05);
         }
 
         #message {
@@ -67,7 +104,7 @@
             </div>
 
             <div class="form-group">
-                <label for="total">Total Amount</label>
+                <label for="total">Total Amount:</label>
                 <input type="text" class="form-control" id="total" value="$0.00" readonly>
             </div>
 

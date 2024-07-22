@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rifles</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        /* Resetting default margin and padding */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Custom CSS */
+
+        body {
+            background-color: #f4f4f4;
         }
 
-        /* Basic styling for header */
         header {
-            background-color: #333;
+            background-color: #343a40;
             color: #fff;
             padding: 10px 0;
         }
@@ -25,99 +25,53 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-            justify-content: space-between; /* Ensure elements are spaced appropriately */
-        }
-
-        .search-bar {
-            flex-grow: 1; /* Allow search bar to take up available space */
-            display: flex;
-            margin: 0 20px; /* Add some margin to space out from logo and buttons */
-        }
-
-        .search-bar input[type="text"] {
-            flex-grow: 1; /* Make input field take up remaining space */
-            padding: 12px;
-            font-size: 1.2rem; /* Increase font size */
-        }
-
-        .search-bar button {
-            padding: 12px 20px;
-            font-size: 1.2rem; /* Increase font size */
-        }
-
-        .header-content2 {
-            font-size: 1.2rem; /* Increase font size */
-            margin-left: auto; /* Align Home link to the rightmost side */
-        }
-        .header-content2 a {
-            color: #fff; /* Set link color to white */
-            text-decoration: none; /* Remove underline by default */
-            font-size: 1.2rem; /* Adjust font size as needed */
-        }
-
-        .header-content2 a:hover {
-            color: #bb86fc;
-            text-decoration: underline;
+            justify-content: space-between;
         }
 
         .logo h2 {
-            font-size: 25px;
-            color: #fff;
+            font-size: 30px;
         }
+
         .logo a {
             color: #fff;
             text-decoration: none;
-            font-size: 25px;
         }
+
         .logo a:hover {
             color: #bb86fc;
             text-decoration: underline;
         }
 
         .search-bar {
+            flex-grow: 1;
             display: flex;
+            margin: 0 20px;
         }
 
         .search-bar input[type="text"] {
-            padding: 8px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-right: none;
-            border-radius: 4px 0 0 4px;
+            border-radius: 20px 0 0 20px;
         }
 
         .search-bar button {
-            padding: 8px 15px;
-            font-size: 1rem;
-            background-color: #4CAF50;
-            color: white;
-            border: 1px solid #4CAF50;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
+            border-radius: 0 20px 20px 0;
+            background-color: #007bff;
+            border: none;
         }
 
         .search-bar button:hover {
-            background-color: #45a049;
+            background-color: #0056b3;
         }
 
         .profile-cart-icons a {
-            margin-left: 10px;
             color: #fff;
-            text-decoration: none;
-            font-size: 1rem;
-        }
-
-        .profile-cart-icons a:hover {
-            text-decoration: underline;
-        }
-        header .profile .cart-icon {
-            margin-right: 10px;
             font-size: 24px;
-            color: #fff;
-            cursor: pointer;
+            margin-left: 15px;
         }
 
-        /* Basic styling for products */
+        .profile-cart-icons a.cart-icon {
+            font-size: 30px; /* Bigger cart icon */
+        }
+
         .products {
             display: flex;
             flex-wrap: wrap;
@@ -128,66 +82,82 @@
         }
 
         .product {
-            width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
             margin: 20px;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .product:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
         }
 
         .product img {
+            border-radius: 10px 10px 0 0;
             width: 100%;
-            border-radius: 5px;
+            height: 200px; /* Fixed height for uniformity */
+            object-fit: cover; /* Maintain aspect ratio */
         }
 
         .product-details {
-            padding: 10px 0;
+            padding: 15px;
         }
 
         .product-details h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+            font-size: 1.5rem;
+            color: #007bff;
         }
 
         .product-details p {
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-        }
-
-        .product-details button {
-            margin-top: 10px;
-            padding: 8px 15px;
             font-size: 1rem;
-            background-color: #007BFF;
-            color: white;
+            color: #555;
+        }
+
+        .add-to-cart, .add-to-wishlist {
+            border-radius: 20px;
             border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
+            color: #fff;
+            margin-right: 10px;
+            padding: 10px 20px;
         }
 
-        .product-details button:hover {
-            background-color: #0056b3;
+        .add-to-cart {
+            background-color: #28a745; /* Green color */
         }
 
-        /* Icon styling */
-        .product-details button img {
-            width: 18px;
+        .add-to-cart:hover {
+            background-color: #218838; /* Darker green */
+        }
+
+        .add-to-wishlist {
+            background-color: #ffc107; /* Yellow color */
+        }
+
+        .add-to-wishlist:hover {
+            background-color: #e0a800; /* Darker yellow */
+        }
+
+        .add-to-cart i, .add-to-wishlist i {
             margin-right: 5px;
         }
 
-        /* Basic styling for footer */
         footer {
-            text-align: center;
-            padding: 10px 0;
-            background-color: #333;
+            background-color: #343a40;
             color: #fff;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
         }
     </style>
 </head>
@@ -195,22 +165,23 @@
     <header>
         <div class="header-content">
             <div class="logo">
-                <h2><a href="Home_page.html">GunZz</a></h2>
+                <h2>Revolver</a></h2>
             </div>
             <div class="search-bar">
-                <input type="text" placeholder="Search...">
-                <button type="submit">Search</button>
+                <input type="text" class="form-control" placeholder="Search...">
+                <button type="submit" class="btn btn-primary">Search</button>
             </div>
-            <div class="profile">
-                <a href="cart.html" class="cart-icon">&#128722;</a>
-            </div>
-            <div class="header-content2">
-                <a href="Home_page.html">Home</a>
+            <div class="profile-cart-icons">
+                <a href="Home_page.html" class="fas fa-home" title="Home"></a>
+                <a href="orders.html" class="fas fa-box" title="Orders"></a>
+                <a href="wishlist.html" class="fas fa-star" title="Wishlist"></a>
+                <a href="cart.html" class="fas fa-shopping-cart cart-icon" title="Cart"></a>
             </div>
         </div>
     </header>
-    
+
     <div class="products">
+        <!-- Product 1 -->
         <div class="product">
             <img src="images/Colt Python.jpeg.crdownload" alt="Colt Python">
             <div class="product-details">
@@ -218,13 +189,14 @@
                 <p>Price: $999</p>
                 <p>A highly regarded .357 Magnum revolver known for its smooth trigger pull and precision.</p>
                 <button class="add-to-cart" onclick="addToCart('Colt Python', 999, 'images/Colt Python.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
+                    <i class="fas fa-shopping-cart"></i> Add to Cart
                 </button>
                 <button class="add-to-wishlist" onclick="addToWishlist('Colt Python', 999, 'images/Colt Python.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
+                    <i class="fas fa-star"></i> Add to Wishlist
                 </button>
             </div>
         </div>
+        <!-- Product 2 -->
         <div class="product">
             <img src="images/Smith & Wesson Model 686.jpeg.crdownload" alt="Smith & Wesson Model 686">
             <div class="product-details">
@@ -232,13 +204,14 @@
                 <p>Price: $899</p>
                 <p>A robust .357 Magnum revolver favored for its durability and accuracy in both recreational shooting and self-defense.</p>
                 <button class="add-to-cart" onclick="addToCart('Smith & Wesson Model 686', 899, 'images/Smith & Wesson Model 686.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
+                    <i class="fas fa-shopping-cart"></i> Add to Cart
                 </button>
                 <button class="add-to-wishlist" onclick="addToWishlist('Smith & Wesson Model 686', 899, 'images/Smith & Wesson Model 686.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
+                    <i class="fas fa-star"></i> Add to Wishlist
                 </button>
             </div>
         </div>
+        <!-- Product 3 -->
         <div class="product">
             <img src="images/Ruger GP100.jpeg.crdownload" alt="Ruger GP100">
             <div class="product-details">
@@ -246,59 +219,62 @@
                 <p>Price: $1099</p>
                 <p>A versatile and rugged .357 Magnum revolver designed for reliability and ease of maintenance.</p>
                 <button class="add-to-cart" onclick="addToCart('Ruger GP100', 1099, 'images/Ruger GP100.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
+                    <i class="fas fa-shopping-cart"></i> Add to Cart
                 </button>
                 <button class="add-to-wishlist" onclick="addToWishlist('Ruger GP100', 1099, 'images/Ruger GP100.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
+                    <i class="fas fa-star"></i> Add to Wishlist
                 </button>
             </div>
         </div>
+        <!-- Product 4 -->
         <div class="product">
-            <img src="images/Smith & Wesson Model 29.jpeg.crdownload" alt="Smith & Wesson Model 29">
+            <img src="images/Smith & Wesson Model 29.jpeg.crdownload" alt="Remington 700">
             <div class="product-details">
                 <h3>Smith & Wesson Model 29</h3>
-                <p>Price: $799</p>
-                <p>Famous for its use in the "Dirty Harry" films, this .44 Magnum revolver is powerful and has a significant recoil.</p>
-                <button class="add-to-cart" onclick="addToCart('Smith & Wesson Model 29', 799, 'images/Smith & Wesson Model 29.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
+                <p>Price: $1199</p>
+                <p>A highly accurate bolt-action rifle, known for its reliability and precision in hunting and shooting sports.</p>
+                <button class="add-to-cart" onclick="addToCart('Remington 700', 1199, 'images/Remington 700.jpeg.crdownload')">
+                    <i class="fas fa-shopping-cart"></i> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Smith & Wesson Model 29', 799, 'images/Smith & Wesson Model 29.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
+                <button class="add-to-wishlist" onclick="addToWishlist('Remington 700', 1199, 'images/Remington 700.jpeg.crdownload')">
+                    <i class="fas fa-star"></i> Add to Wishlist
                 </button>
             </div>
         </div>
+        <!-- Product 5 -->
         <div class="product">
-            <img src="images/Colt King Cobra.jpeg.crdownload" alt="Colt King Cobra">
+            <img src="images/Colt King Cobra.jpeg.crdownload" alt="Winchester Model 70">
             <div class="product-details">
                 <h3>Colt King Cobra</h3>
-                <p>Price: $1199</p>
-                <p>A .357 Magnum revolver known for its strength and accuracy, popular among enthusiasts for its classic design.</p>
-                <button class="add-to-cart" onclick="addToCart('Colt King Cobra', 1199, 'images/Colt King Cobra.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
+                <p>Price: $1399</p>
+                <p>Renowned for its accuracy and reliability, this bolt-action rifle is a popular choice for hunting and target shooting.</p>
+                <button class="add-to-cart" onclick="addToCart('Winchester Model 70', 1399, 'images/Winchester Model 70.jpeg.crdownload')">
+                    <i class="fas fa-shopping-cart"></i> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Colt King Cobra', 1199, 'images/Colt King Cobra.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
+                <button class="add-to-wishlist" onclick="addToWishlist('Winchester Model 70', 1399, 'images/Winchester Model 70.jpeg.crdownload')">
+                    <i class="fas fa-star"></i> Add to Wishlist
                 </button>
             </div>
         </div>
+        <!-- Product 6 -->
         <div class="product">
-            <img src="images/Ruger Redhawk.jpeg.crdownload" alt="Ruger Redhawk">
+            <img src="images/Ruger Redhawk.jpeg.crdownload" alt="Barrett M82">
             <div class="product-details">
                 <h3>Ruger Redhawk</h3>
-                <p>Price: $999</p>
-                <p>A heavy-duty .44 Magnum revolver built for both hunting and self-defense, praised for its strength and reliability.</p>
-                <button class="add-to-cart" onclick="addToCart('Ruger Redhawk', 999, 'images/Ruger Redhawk.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
+                <p>Price: $7999</p>
+                <p>A high-powered sniper rifle known for its long-range accuracy and impressive firepower.</p>
+                <button class="add-to-cart" onclick="addToCart('Barrett M82', 7999, 'images/Barrett M82.jpeg.crdownload')">
+                    <i class="fas fa-shopping-cart"></i> Add to Cart
                 </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Ruger Redhawk', 999, 'images/Ruger Redhawk.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
+                <button class="add-to-wishlist" onclick="addToWishlist('Barrett M82', 7999, 'images/Barrett M82.jpeg.crdownload')">
+                    <i class="fas fa-star"></i> Add to Wishlist
                 </button>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2024 My Store. All rights reserved.</p>
+        <p>&copy; 2024 GunZz. All rights reserved.</p>
     </footer>
 
     <script>

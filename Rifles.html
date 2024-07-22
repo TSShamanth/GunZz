@@ -4,72 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rifles</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        /* Resetting default margin and padding */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Custom CSS */
+        body {
+            background-color: #f4f4f4;
         }
 
-        /* Basic styling for header */
         header {
-            background-color: #333;
+            background-color: #343a40;
             color: #fff;
             padding: 10px 0;
         }
 
-        .header-content {
-            display: flex;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            justify-content: space-between;
-        }
-
-        .search-bar {
-            flex-grow: 1;
-            display: flex;
-            margin: 0 20px;
-        }
-
-        .search-bar input[type="text"] {
-            flex-grow: 1;
-            padding: 12px;
-            font-size: 1.2rem;
-        }
-
-        .search-bar button {
-            padding: 12px 20px;
-            font-size: 1.2rem;
-        }
-
-        .header-content2 {
-            font-size: 1.2rem;
-            margin-left: auto;
-        }
-
-        .header-content2 a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.2rem;
-        }
-
-        .header-content2 a:hover {
-            color: #bb86fc;
-            text-decoration: underline;
-        }
-
         .logo h2 {
-            font-size: 25px;
-            color: #fff;
+            font-size: 30px;
         }
 
         .logo a {
             color: #fff;
             text-decoration: none;
-            font-size: 25px;
         }
 
         .logo a:hover {
@@ -77,241 +34,234 @@
             text-decoration: underline;
         }
 
-        .search-bar {
-            display: flex;
-        }
-
         .search-bar input[type="text"] {
-            padding: 8px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-right: none;
-            border-radius: 4px 0 0 4px;
+            border-radius: 20px 0 0 20px;
         }
 
         .search-bar button {
-            padding: 8px 15px;
-            font-size: 1rem;
-            background-color: #4CAF50;
-            color: white;
-            border: 1px solid #4CAF50;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
+            border-radius: 0 20px 20px 0;
+            background-color: #007bff;
+            border: none;
         }
 
         .search-bar button:hover {
-            background-color: #45a049;
-        }
-
-        .profile-cart-icons a {
-            margin-left: 10px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 1rem;
-        }
-
-        .profile-cart-icons a:hover {
-            text-decoration: underline;
-        }
-
-        header .profile .cart-icon {
-            margin-right: 10px;
-            font-size: 24px;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        /* Basic styling for products */
-        .products {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-
-        .product {
-            width: 300px;
-            margin: 20px;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .product img {
-            width: 100%;
-            height: auto; /* Keep original aspect ratio */
-            object-fit: cover;
-            border-radius: 5px;
-        }
-
-        .product-details {
-            padding: 10px 0;
-        }
-
-        .product-details h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        .product-details p {
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-        }
-
-        .product-details button {
-            margin-top: 10px;
-            padding: 8px 15px;
-            font-size: 1rem;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-        }
-
-        .product-details button:hover {
             background-color: #0056b3;
         }
 
-        /* Icon styling */
-        .product-details button img {
-            width: 18px;
+        .profile-cart-icons a {
+            color: #fff;
+            font-size: 24px;
+            margin-left: 15px;
+        }
+
+        .profile-cart-icons a.cart-icon {
+            font-size: 30px; /* Bigger cart icon */
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 20px; /* Space between rows */
+        }
+
+        .product:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .product img {
+            border-radius: 10px 10px 0 0;
+            width: 100%;
+            height: 200px; /* Fixed height for uniformity */
+            object-fit: cover; /* Maintain aspect ratio */
+        }
+
+        .product-details {
+            padding: 15px;
+        }
+
+        .product-details h3 {
+            font-size: 1.5rem;
+            color: #007bff;
+        }
+
+        .product-details p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .add-to-cart, .add-to-wishlist {
+            border-radius: 20px;
+            border: none;
+            color: #fff;
+            margin-right: 10px;
+            padding: 10px 20px;
+        }
+
+        .add-to-cart {
+            background-color: #28a745; /* Green color */
+        }
+
+        .add-to-cart:hover {
+            background-color: #218838; /* Darker green */
+        }
+
+        .add-to-wishlist {
+            background-color: #ffc107; /* Yellow color */
+        }
+
+        .add-to-wishlist:hover {
+            background-color: #e0a800; /* Darker yellow */
+        }
+
+        .add-to-cart i, .add-to-wishlist i {
             margin-right: 5px;
         }
 
-        /* Basic styling for footer */
         footer {
-            text-align: center;
-            padding: 10px 0;
-            background-color: #333;
+            background-color: #343a40;
             color: #fff;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            padding: 20px;
+            text-align: center;
         }
 
-        /* Highlight styling for search results */
-        .highlight {
-            border: 2px solid #ff0; /* Yellow border for highlight */
-            background-color: #f0f0f0; /* Light grey background for highlight */
+        footer p {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
         }
     </style>
 </head>
 <body>
+
     <header>
-        <div class="header-content">
-            <div class="logo">
-                <h2><a href="Home_page.html">GunZz</a></h2>
-            </div>
-            <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Search...">
-                <button type="button" onclick="searchProduct()">Search</button>
-            </div>
-            <div class="profile">
-                <a href="cart.html" class="cart-icon">&#128722;</a>
-            </div>
-            <div class="header-content2">
-                <a href="Home_page.html">Home</a>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-3 logo">
+                    <h2>Rifles</a></h2>
+                </div>
+                <div class="col-md-6 search-bar d-flex">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+                <div class="col-md-3 text-right profile-cart-icons">
+                    <a href="Home_page.html" class="fas fa-home" title="Home"></a>
+                    <a href="orders.html" class="fas fa-box" title="Orders"></a>
+                    <a href="wishlist.html" class="fas fa-star" title="Wishlist"></a>
+                    <a href="cart.html" class="fas fa-shopping-cart cart-icon" title="Cart"></a>
+                </div>
             </div>
         </div>
     </header>
 
-    <div class="products">
-        <div class="product">
-            <img src="images/AK.jpeg.crdownload" alt="AK-47">
-            <div class="product-details">
-                <h3>AK-47</h3>
-                <p>Price: $999</p>
-                <p>A widely used and iconic Soviet-designed assault rifle known for its durability and simplicity.</p>
-                <button class="add-to-cart" onclick="addToCart('AK-47', 999, 'images/AK.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon" style="width: 18px; vertical-align: middle; margin-right: 5px;">
-                    Add to Cart
-                </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('AK-47', 999, 'images/AK.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
-                </button>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="images/AK.jpeg.crdownload" alt="AK-47">
+                    <div class="product-details">
+                        <h3>AK-47</h3>
+                        <p>Price: $999</p>
+                        <p>A widely used and iconic Soviet-designed assault rifle known for its durability and simplicity.</p>
+                        <button class="add-to-cart" onclick="addToCart('AK-47', 999, 'images/AK.jpeg.crdownload')">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="add-to-wishlist" onclick="addToWishlist('AK-47', 999, 'images/AK.jpeg.crdownload')">
+                            <i class="fas fa-star"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="product">
-            <img src="images/AR-15.jpeg.crdownload" alt="AR-15">
-            <div class="product-details">
-                <h3>AR-15</h3>
-                <p>Price: $899</p>
-                <p>A standard-issue assault rifle for the U.S. military, renowned for its accuracy and lightweight design.</p>
-                <button class="add-to-cart" onclick="addToCart('AR-15', 899, 'images/AR-15.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
-                </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('AR-15', 899, 'images/AR-15.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
-                </button>
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="images/AR-15.jpeg.crdownload" alt="AR-15">
+                    <div class="product-details">
+                        <h3>AR-15</h3>
+                        <p>Price: $899</p>
+                        <p>A standard-issue assault rifle for the U.S. military, renowned for its accuracy and lightweight design.</p>
+                        <button class="add-to-cart" onclick="addToCart('AR-15', 899, 'images/AR-15.jpeg.crdownload')">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="add-to-wishlist" onclick="addToWishlist('AR-15', 899, 'images/AR-15.jpeg.crdownload')">
+                            <i class="fas fa-star"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="product">
-            <img src="images/hk416.jpeg.crdownload" alt="HK-416">
-            <div class="product-details">
-                <h3>HK-416</h3>
-                <p>Price: $1099</p>
-                <p>A German-engineered rifle that combines the best features of the M16/M4 with a gas-piston operating system.</p>
-                <button class="add-to-cart" onclick="addToCart('HK-416', 1099, 'images/hk416.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
-                </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('HK-416', 1099, 'images/hk416.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
-                </button>
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="images/hk416.jpeg.crdownload" alt="HK416">
+                    <div class="product-details">
+                        <h3>HK416</h3>
+                        <p>Price: $1099</p>
+                        <p>A versatile and reliable assault rifle used by various military and law enforcement agencies worldwide.</p>
+                        <button class="add-to-cart" onclick="addToCart('HK416', 1099, 'images/hk416.jpeg.crdownload')">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="add-to-wishlist" onclick="addToWishlist('HK416', 1099, 'images/hk416.jpeg.crdownload')">
+                            <i class="fas fa-star"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="product">
-            <img src="images/tar21.jpeg.crdownload" alt="TAR-21">
-            <div class="product-details">
-                <h3>TAR-21</h3>
-                <p>Price: $799</p>
-                <p>An Israeli bullpup rifle designed for reliability and ease of use in close-quarters combat.</p>
-                <button class="add-to-cart" onclick="addToCart('TAR-21', 799, 'images/tar21.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
-                </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('TAR-21', 799, 'images/tar21.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
-                </button>
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="images/aug.jpeg.crdownload" alt="M4A1">
+                    <div class="product-details">
+                        <h3>AUG</h3>
+                        <p>Price: $949</p>
+                        <p>A compact and lightweight carbine used extensively by military forces, offering high precision and versatility.</p>
+                        <button class="add-to-cart" onclick="addToCart('M4A1', 949, 'images/M4A1.jpeg.crdownload')">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="add-to-wishlist" onclick="addToWishlist('M4A1', 949, 'images/M4A1.jpeg.crdownload')">
+                            <i class="fas fa-star"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="product">
-            <img src="images/aug.jpeg.crdownload" alt="AUG">
-            <div class="product-details">
-                <h3>AUG</h3>
-                <p>Price: $1199</p>
-                <p>An Austrian bullpup assault rifle noted for its compact design and integrated optical sight.</p>
-                <button class="add-to-cart" onclick="addToCart('AUG', 1199, 'images/aug.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
-                </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('AUG', 1199, 'images/aug.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
-                </button>
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="images/scar.jpeg.crdownload" alt="FN SCAR">
+                    <div class="product-details">
+                        <h3>SCAR</h3>
+                        <p>Price: $1199</p>
+                        <p>A modern assault rifle with excellent modularity and reliability, used by various armed forces around the world.</p>
+                        <button class="add-to-cart" onclick="addToCart('FN SCAR', 1199, 'images/FN_SCAR.jpeg.crdownload')">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="add-to-wishlist" onclick="addToWishlist('FN SCAR', 1199, 'images/FN_SCAR.jpeg.crdownload')">
+                            <i class="fas fa-star"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="product">
-            <img src="images/scar.jpeg.crdownload" alt="SCAR">
-            <div class="product-details">
-                <h3>SCAR</h3>
-                <p>Price: $999</p>
-                <p>A modular assault rifle used by U.S. special forces, offering high versatility with different calibers.</p>
-                <button class="add-to-cart" onclick="addToCart('SCAR', 999, 'images/scar.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
-                </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('SCAR', 999, 'images/scar.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
-                </button>
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="images/tar21.jpeg.crdownload" alt="SIG516">
+                    <div class="product-details">
+                        <h3>TAR-21</h3>
+                        <p>Price: $1099</p>
+                        <p>A high-performance rifle with exceptional accuracy and reliability, suitable for a wide range of tactical applications.</p>
+                        <button class="add-to-cart" onclick="addToCart('SIG516', 1099, 'images/SIG516.jpeg.crdownload')">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="add-to-wishlist" onclick="addToWishlist('SIG516', 1099, 'images/SIG516.jpeg.crdownload')">
+                            <i class="fas fa-star"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2024 My Store. All rights reserved.</p>
+        <p>&copy; 2024 GunZz. All rights reserved.</p>
     </footer>
 
     <script>
@@ -320,13 +270,11 @@
             let existingItem = cartItems.find(item => item.product === product);
             if (existingItem) {
                 existingItem.quantity++;
-                existingItem.price = price; // Update price if item already in cart
-                existingItem.image = image; // Update image if item already in cart
             } else {
                 cartItems.push({ product: product, price: price, quantity: 1, image: image });
             }
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
-            alert(product + " has been added to the cart at $" + price);
+            alert(product + " has been added to the cart.");
         }
 
         function addToWishlist(product, price, image) {
@@ -340,20 +288,6 @@
                 alert(product + " has been added to the wishlist.");
             }
         }
-
-        function searchProduct() {
-            const searchInput = document.getElementById('searchInput').value.toLowerCase();
-            const products = document.querySelectorAll('.product');
-            products.forEach(product => {
-                const productName = product.querySelector('h3').textContent.toLowerCase();
-                if (productName.includes(searchInput)) {
-                    product.classList.add('highlight');
-                } else {
-                    product.classList.remove('highlight');
-                }
-            });
-        }
     </script>
 </body>
 </html>
-

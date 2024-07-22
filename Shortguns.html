@@ -4,327 +4,291 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rifles</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        /* Resetting default margin and padding */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Custom CSS */
+
+        body {
+            background-color: #f4f4f4;
         }
 
-        /* Basic styling for header */
         header {
-            background-color: #333;
+            background-color: #343a40;
             color: #fff;
             padding: 10px 0;
         }
 
-        .header-content {
-            display: flex;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            justify-content: space-between; /* Ensure elements are spaced appropriately */
-        }
-
-        .search-bar {
-            flex-grow: 1; /* Allow search bar to take up available space */
-            display: flex;
-            margin: 0 20px; /* Add some margin to space out from logo and buttons */
-        }
-
-        .search-bar input[type="text"] {
-            flex-grow: 1; /* Make input field take up remaining space */
-            padding: 12px;
-            font-size: 1.2rem; /* Increase font size */
-        }
-
-        .search-bar button {
-            padding: 12px 20px;
-            font-size: 1.2rem; /* Increase font size */
-        }
-
-        .header-content2 {
-            font-size: 1.2rem; /* Increase font size */
-            margin-left: auto; /* Align Home link to the rightmost side */
-        }
-        .header-content2 a {
-            color: #fff; /* Set link color to white */
-            text-decoration: none; /* Remove underline by default */
-            font-size: 1.2rem; /* Adjust font size as needed */
-        }
-
-        .header-content2 a:hover {
-            color: #bb86fc;
-            text-decoration: underline;
-        }
-
         .logo h2 {
-            font-size: 25px;
-            color: #fff;
+            font-size: 30px;
         }
+
         .logo a {
             color: #fff;
             text-decoration: none;
-            font-size: 25px;
         }
+
         .logo a:hover {
             color: #bb86fc;
             text-decoration: underline;
         }
 
-        .search-bar {
-            display: flex;
-        }
-
         .search-bar input[type="text"] {
-            padding: 8px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-right: none;
-            border-radius: 4px 0 0 4px;
+            border-radius: 20px 0 0 20px;
         }
 
         .search-bar button {
-            padding: 8px 15px;
-            font-size: 1rem;
-            background-color: #4CAF50;
-            color: white;
-            border: 1px solid #4CAF50;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
+            border-radius: 0 20px 20px 0;
+            background-color: #007bff;
+            border: none;
         }
 
         .search-bar button:hover {
-            background-color: #45a049;
-        }
-
-        .profile-cart-icons a {
-            margin-left: 10px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 1rem;
-        }
-
-        .profile-cart-icons a:hover {
-            text-decoration: underline;
-        }
-        header .profile .cart-icon {
-            margin-right: 10px;
-            font-size: 24px;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        /* Basic styling for products */
-        .products {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-
-        .product {
-            width: 300px;
-            margin: 20px;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .product img {
-            width: 100%;
-            border-radius: 5px;
-        }
-
-        .product-details {
-            padding: 10px 0;
-        }
-
-        .product-details h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        .product-details p {
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-        }
-
-        .product-details button {
-            margin-top: 10px;
-            padding: 8px 15px;
-            font-size: 1rem;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-        }
-
-        .product-details button:hover {
             background-color: #0056b3;
         }
 
-        /* Icon styling */
-        .product-details button img {
-            width: 18px;
+        .profile-cart-icons a {
+            color: #fff;
+            font-size: 24px;
+            margin-left: 15px;
+        }
+
+        .profile-cart-icons a.cart-icon {
+            font-size: 30px; /* Bigger cart icon */
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 20px; /* Space between rows */
+        }
+
+        .product:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .product img {
+            border-radius: 10px 10px 0 0;
+            width: 100%;
+            height: 200px; /* Fixed height for uniformity */
+            object-fit: cover; /* Maintain aspect ratio */
+        }
+
+        .product-details {
+            padding: 15px;
+        }
+
+        .product-details h3 {
+            font-size: 1.5rem;
+            color: #007bff;
+        }
+
+        .product-details p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .add-to-cart, .add-to-wishlist {
+            border-radius: 20px;
+            border: none;
+            color: #fff;
+            margin-right: 10px;
+            padding: 10px 20px;
+        }
+
+        .add-to-cart {
+            background-color: #28a745; /* Green color */
+        }
+
+        .add-to-cart:hover {
+            background-color: #218838; /* Darker green */
+        }
+
+        .add-to-wishlist {
+            background-color: #ffc107; /* Yellow color */
+        }
+
+        .add-to-wishlist:hover {
+            background-color: #e0a800; /* Darker yellow */
+        }
+
+        .add-to-cart i, .add-to-wishlist i {
             margin-right: 5px;
         }
 
-        /* Basic styling for footer */
         footer {
-            text-align: center;
-            padding: 10px 0;
-            background-color: #333;
+            background-color: #343a40;
             color: #fff;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
         }
     </style>
 </head>
 <body>
+
     <header>
-        <div class="header-content">
-            <div class="logo">
-                <h2><a href="Home_page.html">GunZz</a></h2>
-            </div>
-            <div class="search-bar">
-                <input type="text" placeholder="Search...">
-                <button type="submit">Search</button>
-            </div>
-            <div class="profile">
-                <a href="cart.html" class="cart-icon">&#128722;</a>
-            </div>
-            <div class="header-content2">
-                <a href="Home_page.html">Home</a>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-3 logo">
+                    <h2>Shotguns</a></h2>
+                </div>
+                <div class="col-md-6 search-bar d-flex">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+                <div class="col-md-3 text-right profile-cart-icons">
+                    <a href="Home_page.html" class="fas fa-home" title="Home"></a>
+                    <a href="orders.html" class="fas fa-box" title="Orders"></a>
+                    <a href="wishlist.html" class="fas fa-star" title="Wishlist"></a>
+                    <a href="cart.html" class="fas fa-shopping-cart cart-icon" title="Cart"></a>
+                </div>
             </div>
         </div>
     </header>
-    
-    <div class="products">
-        <div class="product">
-            <img src="images/Remington 870.jpeg.crdownload" alt="Remington 870">
-            <div class="product-details">
-                <h3>Remington 870</h3>
-                <p>Price: $999</p>
-                <p>A widely used pump-action shotgun known for its reliability and versatility in various roles, from hunting to home defense.</p>
-                <button class="add-to-cart" onclick="addToCart('Remington 870', 999, 'images/Remington 870.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
-                </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Remington 870', 999, 'images/Remington 870.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
-                </button>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="images/Remington 870.jpeg.crdownload" alt="Rifle 1">
+                    <div class="product-details">
+                        <h3>Remington 870</h3>
+                        <p>Price: $1500</p>
+                        <p>A high-quality rifle known for its precision and durability.</p>
+                        <button class="add-to-cart" onclick="addToCart('Rifle 1', 1500, 'images/rifle1.jpeg')">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="add-to-wishlist" onclick="addToWishlist('Rifle 1', 1500, 'images/rifle1.jpeg')">
+                            <i class="fas fa-star"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="product">
-            <img src="images/Mossberg 500.jpeg.crdownload" alt="Mossberg 500">
-            <div class="product-details">
-                <h3>Mossberg 500</h3>
-                <p>Price: $899</p>
-                <p>Another popular pump-action shotgun, valued for its rugged design and adaptability for different types of shooting.</p>
-                <button class="add-to-cart" onclick="addToCart('Mossberg 500', 899, 'images/Mossberg 500.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
-                </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Mossberg 500', 899, 'images/Mossberg 500.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
-                </button>
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="images/Mossberg 500.jpeg.crdownload" alt="Rifle 2">
+                    <div class="product-details">
+                        <h3>Mossberg 500</h3>
+                        <p>Price: $1750</p>
+                        <p>An advanced rifle designed for long-range accuracy and performance.</p>
+                        <button class="add-to-cart" onclick="addToCart('Rifle 2', 1750, 'images/rifle2.jpeg')">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="add-to-wishlist" onclick="addToWishlist('Rifle 2', 1750, 'images/rifle2.jpeg')">
+                            <i class="fas fa-star"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="product">
-            <img src="images/Benelli M4.jpeg.crdownload" alt="Benelli M4">
-            <div class="product-details">
-                <h3>Benelli M4</h3>
-                <p>Price: $1099</p>
-                <p>A semi-automatic tactical shotgun renowned for its performance, reliability, and advanced features for military and law enforcement use.</p>
-                <button class="add-to-cart" onclick="addToCart('Benelli M4', 1099, 'images/Benelli M4.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
-                </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Benelli M4', 1099, 'images/Benelli M4.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
-                </button>
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="images/Benelli M4.jpeg.crdownload" alt="Rifle 3">
+                    <div class="product-details">
+                        <h3>Benelli M4</h3>
+                        <p>Price: $2000</p>
+                        <p>A state-of-the-art rifle favored by professionals for its reliability and precision.</p>
+                        <button class="add-to-cart" onclick="addToCart('Rifle 3', 2000, 'images/rifle3.jpeg')">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="add-to-wishlist" onclick="addToWishlist('Rifle 3', 2000, 'images/rifle3.jpeg')">
+                            <i class="fas fa-star"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="product">
-            <img src="images/Browning BPS.jpeg.crdownload" alt="Browning BPS">
-            <div class="product-details">
-                <h3>Browning BPS</h3>
-                <p>Price: $799</p>
-                <p>A robust pump-action shotgun featuring a bottom-ejection design, making it a favorite among left-handed shooters and hunters.</p>
-                <button class="add-to-cart" onclick="addToCart('Browning BPS', 799, 'images/Browning BPS.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
-                </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Browning BPS', 799, 'images/Browning BPS.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
-                </button>
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="images/Winchester Model 1300.jpeg.crdownload" alt="Rifle 4">
+                    <div class="product-details">
+                        <h3>Winchester Model 1300</h3>
+                        <p>Price: $2200</p>
+                        <p>A highly sought-after rifle for its unmatched performance and build quality.</p>
+                        <button class="add-to-cart" onclick="addToCart('Rifle 4', 2200, 'images/rifle4.jpeg')">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="add-to-wishlist" onclick="addToWishlist('Rifle 4', 2200, 'images/rifle4.jpeg')">
+                            <i class="fas fa-star"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="product">
-            <img src="images/Winchester Model 1300.jpeg.crdownload" alt="Winchester Model 1300">
-            <div class="product-details">
-                <h3>Winchester Model 1300</h3>
-                <p>Price: $1199</p>
-                <p>Known for its speed and smooth action, this pump-action shotgun is popular for hunting and sport shooting.</p>
-                <button class="add-to-cart" onclick="addToCart('Winchester Model 1300', 1199, 'images/Winchester Model 1300.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
-                </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Winchester Model 1300', 1199, 'images/Winchester Model 1300.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
-                </button>
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="images/Remington Versa Max.jpeg.crdownload" alt="Rifle 5">
+                    <div class="product-details">
+                        <h3>Remington Versa Max</h3>
+                        <p>Price: $2500</p>
+                        <p>An elite rifle known for its exceptional accuracy and durability under various conditions.</p>
+                        <button class="add-to-cart" onclick="addToCart('Rifle 5', 2500, 'images/rifle5.jpeg')">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="add-to-wishlist" onclick="addToWishlist('Rifle 5', 2500, 'images/rifle5.jpeg')">
+                            <i class="fas fa-star"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="product">
-            <img src="images/Remington Versa Max.jpeg.crdownload" alt="Remington Versa Max">
-            <div class="product-details">
-                <h3>Remington Versa Max</h3>
-                <p>Price: $999</p>
-                <p>A semi-automatic shotgun designed for versatility, capable of handling various loads with a self-regulating gas system.</p>
-                <button class="add-to-cart" onclick="addToCart('Remington Versa Max', 999, 'images/Remington Versa Max.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
-                </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Remington Versa Max', 999, 'images/Remington Versa Max.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
-                </button>
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="images/Browning BPS.jpeg.crdownload" alt="Rifle 6">
+                    <div class="product-details">
+                        <h3>Browning BPS</h3>
+                        <p>Price: $2700</p>
+                        <p>A premium rifle renowned for its cutting-edge technology and unparalleled accuracy.</p>
+                        <button class="add-to-cart" onclick="addToCart('Rifle 6', 2700, 'images/rifle6.jpeg')">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="add-to-wishlist" onclick="addToWishlist('Rifle 6', 2700, 'images/rifle6.jpeg')">
+                            <i class="fas fa-star"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <!-- Add your footer content here -->
-        <p>&copy; 2024 My Store. All rights reserved.</p>
+        <p>&copy; 2023 GunZz. All rights reserved.</p>
     </footer>
 
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Custom JS -->
     <script>
         function addToCart(product, price, image) {
-            const item = {
-                product: product,
-                price: price,
-                image: image,
-                quantity: 1 // Default quantity
-            };
-
+            // Retrieve existing cart items from localStorage or initialize empty array
             let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-            
+
             // Check if item already exists in cart
-            const existingItem = cartItems.find(item => item.product === product);
+            let existingItem = cartItems.find(item => item.product === product);
             if (existingItem) {
                 // If item exists, increase quantity
                 existingItem.quantity++;
             } else {
                 // If item does not exist, add new item to cart
-                cartItems.push(item);
+                cartItems.push({ product: product, price: price, quantity: 1, image: image });
             }
 
             // Save updated cartItems back to localStorage
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+            // Provide feedback to user
             alert(product + " has been added to the cart.");
         }
 
@@ -346,26 +310,29 @@
         }
 
         function moveFromWishlistToCart() {
+            // Retrieve wishlist and cart items from localStorage
             let wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
             let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
+            // Iterate over wishlist items
             wishlistItems.forEach(item => {
-                const existingItem = cartItems.find(cartItem => cartItem.product === item.product);
+                // Check if item already exists in cart
+                let existingItem = cartItems.find(cartItem => cartItem.product === item.product);
                 if (existingItem) {
+                    // If item exists, increase quantity
                     existingItem.quantity++;
                 } else {
-                    cartItems.push({
-                        product: item.product,
-                        price: item.price,
-                        image: item.image,
-                        quantity: 1
-                    });
+                    // If item does not exist, add new item to cart
+                    cartItems.push({ product: item.product, price: item.price, quantity: 1, image: item.image });
                 }
             });
 
+            // Save updated cartItems back to localStorage
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+            // Clear wishlist
             localStorage.removeItem('wishlistItems');
-            alert("Items moved from wishlist to cart.");
+            alert("All items have been moved from wishlist to cart.");
         }
 
         function goBack() {

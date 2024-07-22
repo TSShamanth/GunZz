@@ -4,364 +4,336 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pistols</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        /* Resetting default margin and padding */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Custom CSS */
+
+        body {
+            background-color: #f4f4f4;
         }
 
-        /* Basic styling for header */
         header {
-            background-color: #333;
+            background-color: #343a40;
             color: #fff;
             padding: 10px 0;
         }
 
-        .header-content {
-            display: flex;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            justify-content: space-between; /* Ensure elements are spaced appropriately */
-        }
-
-        .search-bar {
-            flex-grow: 1; /* Allow search bar to take up available space */
-            display: flex;
-            margin: 0 20px; /* Add some margin to space out from logo and buttons */
-        }
-
-        .search-bar input[type="text"] {
-            flex-grow: 1; /* Make input field take up remaining space */
-            padding: 12px;
-            font-size: 1.2rem; /* Increase font size */
-        }
-
-        .search-bar button {
-            padding: 12px 20px;
-            font-size: 1.2rem; /* Increase font size */
-        }
-
-        .header-content2 {
-            font-size: 1.2rem; /* Increase font size */
-            margin-left: auto; /* Align Home link to the rightmost side */
-        }
-        .header-content2 a {
-            color: #fff; /* Set link color to white */
-            text-decoration: none; /* Remove underline by default */
-            font-size: 1.2rem; /* Adjust font size as needed */
-        }
-
-        .header-content2 a:hover {
-            color: #bb86fc;
-            text-decoration: underline;
-        }
-
         .logo h2 {
-            font-size: 25px;
-            color: #fff;
+            font-size: 30px;
         }
+
         .logo a {
             color: #fff;
             text-decoration: none;
-            font-size: 25px;
         }
+
         .logo a:hover {
             color: #bb86fc;
             text-decoration: underline;
         }
 
-        .search-bar {
-            display: flex;
-        }
-
         .search-bar input[type="text"] {
-            padding: 8px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-right: none;
-            border-radius: 4px 0 0 4px;
+            border-radius: 20px 0 0 20px;
         }
 
         .search-bar button {
-            padding: 8px 15px;
-            font-size: 1rem;
-            background-color: #4CAF50;
-            color: white;
-            border: 1px solid #4CAF50;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
+            border-radius: 0 20px 20px 0;
+            background-color: #007bff;
+            border: none;
         }
 
         .search-bar button:hover {
-            background-color: #45a049;
-        }
-
-        .profile-cart-icons a {
-            margin-left: 10px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 1rem;
-        }
-
-        .profile-cart-icons a:hover {
-            text-decoration: underline;
-        }
-
-        .profile .cart-icon {
-            margin-right: 10px;
-            font-size: 24px;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        /* Basic styling for products */
-        .products {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-
-        .product {
-            width: 300px;
-            margin: 20px;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .product img {
-            width: 100%;
-            border-radius: 5px;
-        }
-
-        .product-details {
-            padding: 10px 0;
-        }
-
-        .product-details h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        .product-details p {
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-        }
-
-        .product-details button {
-            margin-top: 10px;
-            padding: 8px 15px;
-            font-size: 1rem;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-        }
-
-        .product-details button:hover {
             background-color: #0056b3;
         }
 
-        /* Icon styling */
-        .product-details button img {
-            width: 18px;
+        .profile-cart-icons a {
+            color: #fff;
+            font-size: 24px;
+            margin-left: 15px;
+        }
+
+        .profile-cart-icons a.cart-icon {
+            font-size: 30px; /* Bigger cart icon */
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 20px; /* Space between rows */
+        }
+
+        .product:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .product img {
+            border-radius: 10px 10px 0 0;
+            width: 100%;
+            height: 200px; /* Fixed height for uniformity */
+            object-fit: cover; /* Maintain aspect ratio */
+        }
+
+        .product-details {
+            padding: 15px;
+        }
+
+        .product-details h3 {
+            font-size: 1.5rem;
+            color: #007bff;
+        }
+
+        .product-details p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .add-to-cart, .add-to-wishlist {
+            border-radius: 20px;
+            border: none;
+            color: #fff;
+            margin-right: 10px;
+            padding: 10px 20px;
+        }
+
+        .add-to-cart {
+            background-color: #28a745; /* Green color */
+        }
+
+        .add-to-cart:hover {
+            background-color: #218838; /* Darker green */
+        }
+
+        .add-to-wishlist {
+            background-color: #ffc107; /* Yellow color */
+        }
+
+        .add-to-wishlist:hover {
+            background-color: #e0a800; /* Darker yellow */
+        }
+
+        .add-to-cart i, .add-to-wishlist i {
             margin-right: 5px;
         }
 
-        /* Basic styling for footer */
         footer {
-            text-align: center;
-            padding: 10px 0;
-            background-color: #333;
+            background-color: #343a40;
             color: #fff;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
         }
     </style>
 </head>
 <body>
+
     <header>
-        <div class="header-content">
-            <div class="logo">
-                <h2><a href="Home_page.html">GunZz</a></h2>
-            </div>
-            <div class="search-bar">
-                <input type="text" placeholder="Search...">
-                <button type="submit">Search</button>
-            </div>
-            <div class="profile">
-                <a href="cart.html" class="cart-icon">&#128722;</a>
-            </div>
-            <div class="header-content2">
-                <a href="Home_page.html">Home</a>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-3 logo">
+                    <h2>Pistols</a></h2>
+                </div>
+                <div class="col-md-6 search-bar d-flex">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+                <div class="col-md-3 text-right profile-cart-icons">
+                    <a href="Home_page.html" class="fas fa-home" title="Home"></a>
+                    <a href="orders.html" class="fas fa-box" title="Orders"></a>
+                    <a href="wishlist.html" class="fas fa-star" title="Wishlist"></a>
+                    <a href="cart.html" class="fas fa-shopping-cart cart-icon" title="Cart"></a>
+                </div>
             </div>
         </div>
     </header>
-    
-    <div class="products">
-        <div class="product">
-            <img src="images/gloc.jpeg.crdownload" alt="Gloc-19">
-            <div class="product-details">
-                <h3>Gloc-19</h3>
-                <p>Price: $999</p>
-                <p>A compact, versatile 9mm pistol favored by law enforcement and civilians alike for its reliability and ease of use.</p>
-                <button class="add-to-cart" onclick="addToCart('Gloc-19', 999, 'images/gloc.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
-                </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Gloc-19', 999, 'images/gloc.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
-                </button>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="images/gloc.jpeg.crdownload" alt="Gloc-19">
+                    <div class="product-details">
+                        <h3>Gloc-19</h3>
+                        <p>Price: $999</p>
+                        <p>A compact, versatile 9mm pistol favored by law enforcement and civilians alike for its reliability and ease of use.</p>
+                        <button class="add-to-cart" onclick="addToCart('Gloc-19', 999, 'images/gloc.jpeg.crdownload')">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="add-to-wishlist" onclick="addToWishlist('Gloc-19', 999, 'images/gloc.jpeg.crdownload')">
+                            <i class="fas fa-star"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="product">
-            <img src="images/Beretta 92FS.jpeg.crdownload" alt="Beretta 92FS">
-            <div class="product-details">
-                <h3>Beretta 92FS</h3>
-                <p>Price: $899</p>
-                <p>A classic, full-size 9mm semi-automatic pistol used widely by military and police forces around the world.</p>
-                <button class="add-to-cart" onclick="addToCart('Beretta 92FS', 899, 'images/Beretta 92FS.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
-                </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Beretta 92FS', 899, 'images/Beretta 92FS.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
-                </button>
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="images/Beretta 92FS.jpeg.crdownload" alt="Beretta 92FS">
+                    <div class="product-details">
+                        <h3>Beretta 92FS</h3>
+                        <p>Price: $899</p>
+                        <p>A classic, full-size 9mm semi-automatic pistol used widely by military and police forces around the world.</p>
+                        <button class="add-to-cart" onclick="addToCart('Beretta 92FS', 899, 'images/Beretta 92FS.jpeg.crdownload')">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="add-to-wishlist" onclick="addToWishlist('Beretta 92FS', 899, 'images/Beretta 92FS.jpeg.crdownload')">
+                            <i class="fas fa-star"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="product">
-            <img src="images/Heckler & Koch VP9.jpeg.crdownload" alt="Heckler & Koch VP9">
-            <div class="product-details">
-                <h3>Heckler & Koch VP9</h3>
-                <p>Price: $1099</p>
-                <p>A well-engineered 9mm pistol with excellent ergonomics and a consistent trigger pull.</p>
-                <button class="add-to-cart" onclick="addToCart('Heckler & Koch VP9', 1099, 'images/Heckler & Koch VP9.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
-                </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Heckler & Koch VP9', 1099, 'images/Heckler & Koch VP9.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
-                </button>
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="images/Sig Sauer P320.jpeg.crdownload" alt="Sig Sauer P226">
+                    <div class="product-details">
+                        <h3>Sig Sauer P320</h3>
+                        <p>Price: $1099</p>
+                        <p>A renowned 9mm pistol known for its accuracy and reliability, used by military and law enforcement agencies worldwide.</p>
+                        <button class="add-to-cart" onclick="addToCart('Sig Sauer P226', 1099, 'images/Sig Sauer P226.jpeg.crdownload')">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="add-to-wishlist" onclick="addToWishlist('Sig Sauer P226', 1099, 'images/Sig Sauer P226.jpeg.crdownload')">
+                            <i class="fas fa-star"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="product">
-            <img src="images/Sig Sauer P320.jpeg.crdownload" alt="Sig Sauer P320">
-            <div class="product-details">
-                <h3>Sig Sauer P320</h3>
-                <p>Price: $799</p>
-                <p>A modular, striker-fired pistol known for its accuracy, reliability, and customizable design.</p>
-                <button class="add-to-cart" onclick="addToCart('Sig Sauer P320', 799, 'images/Sig Sauer P320.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
-                </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Sig Sauer P320', 799, 'images/Sig Sauer P320.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
-                </button>
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="images/Smith & Wesson M&P Shield.jpeg.crdownload" alt="Colt M1911">
+                    <div class="product-details">
+                        <h3>Smith & Wesson M&P Shield</h3>
+                        <p>Price: $799</p>
+                        <p>An iconic .45 ACP pistol with a storied history, favored for its stopping power and classic design.</p>
+                        <button class="add-to-cart" onclick="addToCart('Colt M1911', 799, 'images/Colt M1911.jpeg.crdownload')">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="add-to-wishlist" onclick="addToWishlist('Colt M1911', 799, 'images/Colt M1911.jpeg.crdownload')">
+                            <i class="fas fa-star"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="product">
-            <img src="images/Smith & Wesson M&P Shield.jpeg.crdownload" alt="Smith & Wesson M&P Shield">
-            <div class="product-details">
-                <h3>Smith & Wesson M&P Shield</h3>
-                <p>Price: $1199</p>
-                <p>A popular, slim, and lightweight 9mm handgun ideal for concealed carry.</p>
-                <button class="add-to-cart" onclick="addToCart('Smith & Wesson M&P Shield', 1199, 'images/Smith & Wesson M&P Shield.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
-                </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Smith & Wesson M&P Shield', 1199, 'images/Smith & Wesson M&P Shield.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
-                </button>
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="images/Springfield XD-S.jpeg.crdownload" alt="CZ 75">
+                    <div class="product-details">
+                        <h3>Springfield XD-S</h3>
+                        <p>Price: $949</p>
+                        <p>A reliable and accurate 9mm pistol with a robust design, popular among competitive shooters and enthusiasts.</p>
+                        <button class="add-to-cart" onclick="addToCart('CZ 75', 949, 'images/CZ 75.jpeg.crdownload')">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="add-to-wishlist" onclick="addToWishlist('CZ 75', 949, 'images/CZ 75.jpeg.crdownload')">
+                            <i class="fas fa-star"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="product">
-            <img src="images/Springfield XD-S.jpeg.crdownload" alt="Springfield XD-S">
-            <div class="product-details">
-                <h3>Springfield XD-S</h3>
-                <p>Price: $999</p>
-                <p>A compact, single-stack 9mm pistol designed for easy concealment and comfortable carry.</p>
-                <button class="add-to-cart" onclick="addToCart('Springfield XD-S', 999, 'images/Springfield XD-S.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
-                </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Springfield XD-S', 999, 'images/Springfield XD-S.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
-                </button>
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="images/Heckler & Koch VP9.jpeg.crdownload" alt="CZ P-10">
+                    <div class="product-details">
+                        <h3>Heckler & Koch VP9</h3>
+                        <p>Price: $899</p>
+                        <p>A well-balanced and ergonomic 9mm pistol, known for its exceptional performance and reliability.</p>
+                        <button class="add-to-cart" onclick="addToCart('CZ P-10', 899, 'images/CZ P-10.jpeg.crdownload')">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="add-to-wishlist" onclick="addToWishlist('CZ P-10', 899, 'images/CZ P-10.jpeg.crdownload')">
+                            <i class="fas fa-star"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <!-- Add your footer content here -->
-        <p>&copy; 2024 My Store. All rights reserved.</p>
+        <p>&copy; 2024 GunZz. All rights reserved.</p>
     </footer>
 
     <script>
         function addToCart(product, price, image) {
+            // Retrieve existing cart items from localStorage or initialize empty array
             let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+            // Check if item already exists in cart
             let existingItem = cartItems.find(item => item.product === product);
             if (existingItem) {
+                // If item exists, increase quantity
                 existingItem.quantity++;
             } else {
+                // If item does not exist, add new item to cart
                 cartItems.push({ product: product, price: price, quantity: 1, image: image });
             }
+
+            // Save updated cartItems back to localStorage
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
-            alert(product + " has been added to the cart at $" + price);
+
+            // Provide feedback to user
+            alert(product + " has been added to the cart.");
         }
 
         function addToWishlist(product, price, image) {
+            // Retrieve existing wishlist items from localStorage or initialize empty array
             let wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
+
+            // Check if item already exists in wishlist
             let existingItem = wishlistItems.find(item => item.product === product);
             if (existingItem) {
                 alert(product + " is already in the wishlist.");
             } else {
+                // If item does not exist, add new item to wishlist
                 wishlistItems.push({ product: product, price: price, image: image });
+                // Save updated wishlistItems back to localStorage
                 localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
                 alert(product + " has been added to the wishlist.");
             }
         }
 
-        function moveFromWishlistToCart(product) {
+        function moveFromWishlistToCart() {
+            // Retrieve wishlist and cart items from localStorage
             let wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
             let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-            
-            let itemToMove = wishlistItems.find(item => item.product === product);
-            if (itemToMove) {
-                // Add item to cart
-                let existingItem = cartItems.find(item => item.product === product);
+
+            // Iterate over wishlist items
+            wishlistItems.forEach(item => {
+                // Check if item already exists in cart
+                let existingItem = cartItems.find(cartItem => cartItem.product === item.product);
                 if (existingItem) {
+                    // If item exists, increase quantity
                     existingItem.quantity++;
                 } else {
-                    cartItems.push({ 
-                        product: itemToMove.product, 
-                        price: itemToMove.price, 
-                        quantity: 1, 
-                        image: itemToMove.image 
-                    });
+                    // If item does not exist, add new item to cart
+                    cartItems.push({ product: item.product, price: item.price, quantity: 1, image: item.image });
                 }
-                localStorage.setItem('cartItems', JSON.stringify(cartItems));
-                
-                // Remove item from wishlist
-                wishlistItems = wishlistItems.filter(item => item.product !== product);
-                localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
-                
-                alert(product + " has been moved to the cart.");
-            } else {
-                alert(product + " is not in the wishlist.");
-            }
+            });
+
+            // Save updated cartItems back to localStorage
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+            // Clear wishlist
+            localStorage.removeItem('wishlistItems');
+            alert("All items have been moved from wishlist to cart.");
         }
 
         function goBack() {
             window.history.back();
         }
     </script>
-    
+
 </body>
 </html>
