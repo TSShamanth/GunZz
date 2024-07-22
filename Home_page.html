@@ -22,6 +22,7 @@
             background-color: #333;
             padding: 10px 20px;
             color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         header .logo {
@@ -42,6 +43,7 @@
             border-radius: 4px;
             border: none;
             font-size: 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         header .search-bar .search-icon {
@@ -63,6 +65,8 @@
             height: 40px;
             border-radius: 50%;
             cursor: pointer;
+            border: 2px solid #fff; /* White border for profile picture */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         header .profile .cart-icon {
@@ -89,6 +93,7 @@
             border-radius: 4px;
             overflow: hidden;
             z-index: 1000; /* Ensure dropdown is above other elements */
+            width: 200px; /* Fixed width for dropdown */
         }
 
         header .profile .dropdown a {
@@ -107,7 +112,6 @@
             margin-right: 10px;
             font-size: 18px; /* Adjust size as needed */
         }
-
 
         .categories {
             display: grid;
@@ -139,9 +143,8 @@
             font-weight: bold;
         }
 
-        .highlight {
-            border: 2px solid #ff0; /* Yellow border for highlight */
-            background-color: #f0f0f0; /* Light grey background for highlight */
+        .category:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
     </style>
     <script>
@@ -202,23 +205,23 @@
         <div class="logo">GunZz</div>
         <div class="search-bar">
             <input type="text" placeholder="Search...">
-            <span class="search-icon">&#128269;</span> <!-- Unicode for magnifying glass icon -->
+            <span class="search-icon"><i class="fas fa-search"></i></span> <!-- Font Awesome for search icon -->
         </div>
         <div class="profile">
-            <span class="cart-icon">&#128722;</span> <!-- Unicode for shopping cart icon -->
+            <span class="cart-icon"><i class="fas fa-shopping-cart"></i></span> <!-- Font Awesome for cart icon -->
             <img src="images/pfp.png.crdownload" alt="Profile Picture">
-            <span class="arrow">&#9660;</span> <!-- Unicode for down arrow -->
+            <span class="arrow"><i class="fas fa-chevron-down"></i></span> <!-- Font Awesome for down arrow -->
             <div class="dropdown">
                 <!-- <a href="profile.html">
-                    <span class="icon">&#128100;</span> <!-- Unicode for profile icon -->
+                    <span class="icon"><i class="fas fa-user"></i></span> <!-- Font Awesome profile icon -->
                     <!-- Profile 
                 </a> -->
                 <a href="orders.html">
-                    <span class="icon">&#128179;</span> <!-- Unicode for order icon -->
+                    <span class="icon"><i class="fas fa-box"></i></span> <!-- Font Awesome orders icon -->
                     Orders
                 </a>
                 <a href="wishlist.html">
-                    <span class="icon">&#9733;</span> <!-- Unicode for wishlist icon -->
+                    <span class="icon"><i class="fas fa-star"></i></span> <!-- Font Awesome wishlist icon -->
                     Wishlist
                 </a>
                 <a href="Login.html">
@@ -228,7 +231,6 @@
             </div>
         </div>
     </header>
-    
 
     <div class="categories">
         <a href="Rifles.html" class="category">
@@ -243,7 +245,7 @@
             <img src="images/revolver.jpeg.crdownload" alt="Revolvers">
             <div class="category-title">Revolvers</div>
         </a>
-        <a href="Shortguns.html" class="category">
+        <a href="Shotguns.html" class="category">
             <img src="images/shortgun.jpeg.crdownload" alt="Shotguns">
             <div class="category-title">Shotguns</div>
         </a>

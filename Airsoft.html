@@ -4,72 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rifles</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        /* Resetting default margin and padding */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Custom CSS */
+
+        body {
+            background-color: #f4f4f4;
         }
 
-        /* Basic styling for header */
         header {
-            background-color: #333;
+            background-color: #343a40;
             color: #fff;
             padding: 10px 0;
         }
 
-        .header-content {
-            display: flex;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            justify-content: space-between; /* Ensure elements are spaced appropriately */
-        }
-
-        .search-bar {
-            flex-grow: 1; /* Allow search bar to take up available space */
-            display: flex;
-            margin: 0 20px; /* Add some margin to space out from logo and buttons */
-        }
-
-        .search-bar input[type="text"] {
-            flex-grow: 1; /* Make input field take up remaining space */
-            padding: 12px;
-            font-size: 1.2rem; /* Increase font size */
-        }
-
-        .search-bar button {
-            padding: 12px 20px;
-            font-size: 1.2rem; /* Increase font size */
-        }
-
-        .header-content2 {
-            font-size: 1.2rem; /* Increase font size */
-            margin-left: auto; /* Align Home link to the rightmost side */
-        }
-
-        .header-content2 a {
-            color: #fff; /* Set link color to white */
-            text-decoration: none; /* Remove underline by default */
-            font-size: 1.2rem; /* Adjust font size as needed */
-        }
-
-        .header-content2 a:hover {
-            color: #bb86fc;
-            text-decoration: underline;
-        }
-
         .logo h2 {
-            font-size: 25px;
-            color: #fff;
+            font-size: 30px;
         }
 
         .logo a {
             color: #fff;
             text-decoration: none;
-            font-size: 25px;
         }
 
         .logo a:hover {
@@ -77,235 +35,236 @@
             text-decoration: underline;
         }
 
-        .search-bar {
-            display: flex;
-        }
-
         .search-bar input[type="text"] {
-            padding: 8px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-right: none;
-            border-radius: 4px 0 0 4px;
+            border-radius: 20px 0 0 20px;
         }
 
         .search-bar button {
-            padding: 8px 15px;
-            font-size: 1rem;
-            background-color: #4CAF50;
-            color: white;
-            border: 1px solid #4CAF50;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
+            border-radius: 0 20px 20px 0;
+            background-color: #007bff;
+            border: none;
         }
 
         .search-bar button:hover {
-            background-color: #45a049;
-        }
-
-        .profile-cart-icons a {
-            margin-left: 10px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 1rem;
-        }
-
-        .profile-cart-icons a:hover {
-            text-decoration: underline;
-        }
-
-        header .profile .cart-icon {
-            margin-right: 10px;
-            font-size: 24px;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        /* Basic styling for products */
-        .products {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-
-        .product {
-            width: 300px;
-            margin: 20px;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .product img {
-            width: 100%;
-            border-radius: 5px;
-        }
-
-        .product-details {
-            padding: 10px 0;
-        }
-
-        .product-details h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        .product-details p {
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-        }
-
-        .product-details button {
-            margin-top: 10px;
-            padding: 8px 15px;
-            font-size: 1rem;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-        }
-
-        .product-details button:hover {
             background-color: #0056b3;
         }
 
-        /* Icon styling */
-        .product-details button img {
-            width: 18px;
+        .profile-cart-icons a {
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .profile-cart-icons a.cart-icon {
+            font-size: 30px; /* Bigger cart icon */
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 20px; /* Space between rows */
+        }
+
+        .product:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .product img {
+            border-radius: 10px 10px 0 0;
+            width: 100%;
+            height: 200px; /* Fixed height for uniformity */
+            object-fit: cover; /* Maintain aspect ratio */
+        }
+
+        .product-details {
+            padding: 15px;
+        }
+
+        .product-details h3 {
+            font-size: 1.5rem;
+            color: #007bff;
+        }
+
+        .product-details p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .add-to-cart, .add-to-wishlist {
+            border-radius: 20px;
+            border: none;
+            color: #fff;
+            margin-right: 10px;
+            padding: 10px 20px;
+        }
+
+        .add-to-cart {
+            background-color: #28a745; /* Green color */
+        }
+
+        .add-to-cart:hover {
+            background-color: #218838; /* Darker green */
+        }
+
+        .add-to-wishlist {
+            background-color: #ffc107; /* Yellow color */
+        }
+
+        .add-to-wishlist:hover {
+            background-color: #e0a800; /* Darker yellow */
+        }
+
+        .add-to-cart i, .add-to-wishlist i {
             margin-right: 5px;
         }
 
-        /* Basic styling for footer */
         footer {
-            text-align: center;
-            padding: 10px 0;
-            background-color: #333;
+            background-color: #343a40;
             color: #fff;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
         }
     </style>
 </head>
 <body>
+
     <header>
-        <div class="header-content">
-            <div class="logo">
-                <h2><a href="Home_page.html">GunZz</a></h2>
-            </div>
-            <div class="search-bar">
-                <input type="text" placeholder="Search...">
-                <button type="submit">Search</button>
-            </div>
-            <div class="profile">
-                <a href="cart.html" class="cart-icon">&#128722;</a>
-            </div>
-            <div class="header-content2">
-                <a href="Home_page.html">Home</a>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-3 logo">
+                    <h2><a href="Home_page.html">GunZz</a></h2>
+                </div>
+                <div class="col-md-6 search-bar d-flex">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+                <div class="col-md-3 text-right profile-cart-icons">
+                    <a href="cart.html" class="cart-icon">&#128722;</a>
+                </div>
             </div>
         </div>
     </header>
-    
-    <div class="products">
-        <div class="product">
-            <img src="images/Tokyo Marui M4A1.jpeg.crdownload" alt="Rifle 1">
-            <div class="product-details">
-                <h3>Tokyo Marui M4A1</h3>
-                <p>Price: $999</p>
-                <p>A popular and reliable AEG (Automatic Electric Gun) known for its durability and excellent performance in various airsoft scenarios.</p>
-                <button class="add-to-cart" onclick="addToCart('Tokyo Marui M4A1', 999, 'images/Tokyo Marui M4A1.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
-                </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Tokyo Marui M4A1', 999, 'images/Tokyo Marui M4A1.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
-                </button>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="images/Tokyo Marui M4A1.jpeg.crdownload" alt="Rifle 1">
+                    <div class="product-details">
+                        <h3>Tokyo Marui M4A1</h3>
+                        <p>Price: $999</p>
+                        <p>A popular and reliable AEG (Automatic Electric Gun) known for its durability and excellent performance in various airsoft scenarios.</p>
+                        <button class="add-to-cart" onclick="addToCart('Tokyo Marui M4A1', 999, 'images/Tokyo Marui M4A1.jpeg.crdownload')">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="add-to-wishlist" onclick="addToWishlist('Tokyo Marui M4A1', 999, 'images/Tokyo Marui M4A1.jpeg.crdownload')">
+                            <i class="fas fa-star"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="product">
-            <img src="images/Krytac Trident MK2.jpeg.crdownload" alt="Rifle 2">
-            <div class="product-details">
-                <h3>Krytac Trident MK2</h3>
-                <p>Price: $899</p>
-                <p>A high-quality AEG renowned for its robust build and consistent accuracy, often favored by competitive players.</p>
-                <button class="add-to-cart" onclick="addToCart('Krytac Trident MK2', 899, 'images/Krytac Trident MK2.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
-                </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('Krytac Trident MK2', 899, 'images/Krytac Trident MK2.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
-                </button>
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="images/Krytac Trident MK2.jpeg.crdownload" alt="Rifle 2">
+                    <div class="product-details">
+                        <h3>Krytac Trident MK2</h3>
+                        <p>Price: $899</p>
+                        <p>A high-quality AEG renowned for its robust build and consistent accuracy, often favored by competitive players.</p>
+                        <button class="add-to-cart" onclick="addToCart('Krytac Trident MK2', 899, 'images/Krytac Trident MK2.jpeg.crdownload')">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="add-to-wishlist" onclick="addToWishlist('Krytac Trident MK2', 899, 'images/Krytac Trident MK2.jpeg.crdownload')">
+                            <i class="fas fa-star"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="product">
-            <img src="images/G&G Combat Machine M4.jpeg.crdownload" alt="Rifle 3">
-            <div class="product-details">
-                <h3>G&G Combat Machine M4</h3>
-                <p>Price: $1099</p>
-                <p>An affordable and dependable AEG with good performance and durability, making it a popular choice for beginners and casual players.</p>
-                <button class="add-to-cart" onclick="addToCart('G&G Combat Machine M4', 1099, 'images/G&G Combat Machine M4.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
-                </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('G&G Combat Machine M4', 1099, 'images/G&G Combat Machine M4.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
-                </button>
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="images/G&G Combat Machine M4.jpeg.crdownload" alt="Rifle 3">
+                    <div class="product-details">
+                        <h3>G&G Combat Machine M4</h3>
+                        <p>Price: $1099</p>
+                        <p>An affordable and dependable AEG with good performance and durability, making it a popular choice for beginners and casual players.</p>
+                        <button class="add-to-cart" onclick="addToCart('G&G Combat Machine M4', 1099, 'images/G&G Combat Machine M4.jpeg.crdownload')">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="add-to-wishlist" onclick="addToWishlist('G&G Combat Machine M4', 1099, 'images/G&G Combat Machine M4.jpeg.crdownload')">
+                            <i class="fas fa-star"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="product">
-            <img src="images/VFC HK416.jpeg.crdownload" alt="Rifle 4">
-            <div class="product-details">
-                <h3>VFC HK416</h3>
-                <p>Price: $799</p>
-                <p>A premium AEG replicating the HK416 rifle, praised for its realism, build quality, and performance in tactical airsoft games.</p>
-                <button class="add-to-cart" onclick="addToCart('VFC HK416', 799, 'images/VFC HK416.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
-                </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('VFC HK416', 799, 'images/VFC HK416.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
-                </button>
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="images/VFC HK416.jpeg.crdownload" alt="Rifle 4">
+                    <div class="product-details">
+                        <h3>VFC HK416</h3>
+                        <p>Price: $799</p>
+                        <p>A premium AEG replicating the HK416 rifle, praised for its realism, build quality, and performance in tactical airsoft games.</p>
+                        <button class="add-to-cart" onclick="addToCart('VFC HK416', 799, 'images/VFC HK416.jpeg.crdownload')">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="add-to-wishlist" onclick="addToWishlist('VFC HK416', 799, 'images/VFC HK416.jpeg.crdownload')">
+                            <i class="fas fa-star"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="product">
-            <img src="images/ASG Scorpion Evo 3 A1.jpeg.crdownload" alt="Rifle 5">
-            <div class="product-details">
-                <h3>ASG Scorpion Evo 3 A1</h3>
-                <p>Price: $1199</p>
-                <p>A compact and highly customizable AEG featuring advanced internals and a unique design, popular for its versatility and reliability.</p>
-                <button class="add-to-cart" onclick="addToCart('ASG Scorpion Evo 3 A1', 1199, 'images/ASG Scorpion Evo 3 A1.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
-                </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('ASG Scorpion Evo 3 A1', 1199, 'images/ASG Scorpion Evo 3 A1.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
-                </button>
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="images/ASG Scorpion Evo 3 A1.jpeg.crdownload" alt="Rifle 5">
+                    <div class="product-details">
+                        <h3>ASG Scorpion Evo 3 A1</h3>
+                        <p>Price: $1199</p>
+                        <p>A compact and highly customizable AEG featuring advanced internals and a unique design, popular for its versatility and reliability.</p>
+                        <button class="add-to-cart" onclick="addToCart('ASG Scorpion Evo 3 A1', 1199, 'images/ASG Scorpion Evo 3 A1.jpeg.crdownload')">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="add-to-wishlist" onclick="addToWishlist('ASG Scorpion Evo 3 A1', 1199, 'images/ASG Scorpion Evo 3 A1.jpeg.crdownload')">
+                            <i class="fas fa-star"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="product">
-            <img src="images/CheyTac M200 Intervention.jpeg.crdownload" alt="Rifle 6">
-            <div class="product-details">
-                <h3>CheyTac M200 Intervention</h3>
-                <p>Price: $999</p>
-                <p>A bolt-action sniper rifle designed for long-range shooting, notable for its advanced ballistics and ability to engage targets at extreme distances.</p>
-                <button class="add-to-cart" onclick="addToCart('CheyTac M200 Intervention', 999, 'images/CheyTac M200 Intervention.jpeg.crdownload')">
-                    <img src="images/cart.png.crdownload" alt="Cart Icon"> Add to Cart
-                </button>
-                <button class="add-to-wishlist" onclick="addToWishlist('CheyTac M200 Intervention', 999, 'images/CheyTac M200 Intervention.jpeg.crdownload')">
-                    <img src="images/start.png.crdownload" alt="Star Icon"> Add to Wishlist
-                </button>
+            <div class="col-md-4">
+                <div class="product">
+                    <img src="images/CheyTac M200 Intervention.jpeg.crdownload" alt="Rifle 6">
+                    <div class="product-details">
+                        <h3>CheyTac M200 Intervention</h3>
+                        <p>Price: $999</p>
+                        <p>A bolt-action sniper rifle designed for long-range shooting, notable for its advanced ballistics and ability to engage targets at extreme distances.</p>
+                        <button class="add-to-cart" onclick="addToCart('CheyTac M200 Intervention', 999, 'images/CheyTac M200 Intervention.jpeg.crdownload')">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="add-to-wishlist" onclick="addToWishlist('CheyTac M200 Intervention', 999, 'images/CheyTac M200 Intervention.jpeg.crdownload')">
+                            <i class="fas fa-star"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <!-- Add your footer content here -->
         <p>&copy; 2024 My Store. All rights reserved.</p>
     </footer>
 
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         function addToCart(product, price, image) {
             const item = {
@@ -328,17 +287,12 @@
         }
 
         function addToWishlist(product, price, image) {
-            // Retrieve existing wishlist items from localStorage or initialize empty array
             let wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
-
-            // Check if item already exists in wishlist
             let existingItem = wishlistItems.find(item => item.product === product);
             if (existingItem) {
                 alert(product + " is already in the wishlist.");
             } else {
-                // If item does not exist, add new item to wishlist
                 wishlistItems.push({ product: product, price: price, image: image });
-                // Save updated wishlistItems back to localStorage
                 localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
                 alert(product + " has been added to the wishlist.");
             }
@@ -346,3 +300,4 @@
     </script>
 </body>
 </html>
+

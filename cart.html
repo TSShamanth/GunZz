@@ -6,27 +6,32 @@
     <title>Cart</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+        /* Custom CSS */
         body {
-            background-color: #f0f0f0;
-            margin: 20px;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
         }
 
         header {
-            background-color: #333;
+            background-color: #343a40;
             color: #fff;
-            padding: 10px 0;
+            padding: 15px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .logo h2 {
-            font-size: 25px;
-            color: #fff;
+            font-size: 30px;
+            margin: 0;
         }
 
         .logo a {
             color: #fff;
             text-decoration: none;
-            font-size: 25px;
         }
 
         .logo a:hover {
@@ -34,29 +39,64 @@
             text-decoration: underline;
         }
 
+        .header-nav a {
+            color: #fff;
+            font-size: 18px;
+            margin-left: 15px;
+            text-decoration: none;
+        }
+
+        .header-nav a:hover {
+            color: #007bff;
+        }
+
         .cart {
             background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 20px;
             margin-top: 20px;
         }
 
+        .cart h2 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
         .cart-item {
             display: flex;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #ccc;
             align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
         }
 
         .cart-item img {
-            width: 80px;
-            height: 80px;
-            object-fit: cover; /* Ensures image covers the specified area */
-            border-radius: 5px;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
             margin-right: 15px;
+        }
+
+        .cart-item-details {
+            flex-grow: 1;
+        }
+
+        .cart-item-details h3 {
+            font-size: 1.25rem;
+            color: #007bff;
+            margin: 0;
+        }
+
+        .cart-item-details p {
+            margin: 5px 0;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .quantity-input {
+            width: 60px;
         }
 
         .total-area {
@@ -65,17 +105,48 @@
         }
 
         .total-area p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
         }
 
         footer {
-            text-align: center;
-            padding: 10px 0;
-            background-color: #333;
+            background-color: #343a40;
             color: #fff;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .social-icons {
+            margin: 10px 0;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            color: #007bff;
+        }
+
+        .container {
+            max-width: 1200px;
         }
     </style>
 </head>
@@ -86,12 +157,12 @@
                 <div class="logo">
                     <h2><a href="Home_page.html">GunZz</a></h2>
                 </div>
-                <div class="center-title">
-                    <h2>Cart</h2>
-                </div>
-                <div class="header-content2">
+                <nav class="header-nav">
                     <a href="Home_page.html">Home</a>
-                </div>
+                    <!-- <a href="Products.html">Products</a> -->
+                    <a href="Wishlist.html">Wishlist</a>
+                    <a href="Orders.html">Orders</a>
+                </nav>
             </div>
         </div>
     </header>
@@ -105,11 +176,17 @@
             <p><strong>Total:</strong> $<span id="totalAmount">0.00</span></p>
         </div>
         <div class="text-right mt-3">
-            <a href="Payment_details.html" class="btn btn-primary" onclick="storeTotalAndProceed()">Order Now</a>
+            <a href="Payment_details.html" class="btn btn-primary" onclick="storeCartItems()">Order Now</a>
         </div>
     </div>
 
     <footer>
+        <div class="social-icons">
+            <a href="#" class="fab fa-facebook-f" title="Facebook"></a>
+            <a href="#" class="fab fa-twitter" title="Twitter"></a>
+            <a href="#" class="fab fa-instagram" title="Instagram"></a>
+            <a href="#" class="fab fa-linkedin-in" title="LinkedIn"></a>
+        </div>
         <p>&copy; 2024 My Store. All rights reserved.</p>
     </footer>
 
@@ -117,6 +194,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Font Awesome for icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 
     <script>
         let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -138,7 +217,7 @@
                         <p><strong>Quantity:</strong> 
                             <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-index="${index}">
                             <button class="btn btn-sm btn-primary mt-2" onclick="updateQuantity(${index})">Update Quantity</button>
-                            <button class="btn btn-sm btn-danger mt-2" onclick="removeFromCart('${item.product}')">Remove from Cart</button>
+                            <button class="btn btn-sm btn-danger mt-2" onclick="removeFromCart('${item.product}')">Remove</button>
                         </p>
                     </div>
                 `;
@@ -171,11 +250,9 @@
             displayCartItems();
         }
 
-        function storeTotalAndProceed() {
-            // Ensure total is up-to-date before proceeding
-            displayCartItems();
-            // Redirect to payment page
-            window.location.href = 'Payment_details.html';
+        function storeCartItems() {
+            // Store the current cart items in session storage before proceeding
+            sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
         }
 
         displayCartItems();
