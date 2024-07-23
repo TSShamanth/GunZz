@@ -208,6 +208,12 @@
                 `;
                 orderContainer.appendChild(itemElement);
             });
+
+            // Set a timeout to clear orders after 5 minutes (300,000 milliseconds)
+            setTimeout(function() {
+                localStorage.removeItem('orders');
+                orderContainer.innerHTML = ''; // Clear the displayed orders
+            }, 300000); // 300,000 milliseconds = 5 minutes
         });
     </script>
 </body>
